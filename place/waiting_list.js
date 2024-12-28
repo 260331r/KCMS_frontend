@@ -12,7 +12,9 @@ function init_create_kitchen_list(){
     const list = document.getElementById("list");
 
     create_kitchen_frame_list(all_elements, list);
-
+    if(searched_elements.length <= 0){
+        create_error_text();
+    }
     return 0;
 }
 
