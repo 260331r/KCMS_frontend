@@ -1,0 +1,13 @@
+/* このコードはコーディング規約に則っていないので，変数名などは参考にしないでください */
+body{
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+.common_Text{
+    font-size: 40px;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
