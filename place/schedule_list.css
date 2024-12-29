@@ -39,11 +39,6 @@ body{
     bottom: -5px;
 }
 
-/* 検索機能の枠の設定 */
-.SEARCH_OPTION{
-    margin-top: 50px;
-}
-
 /* 出店予定リストの配置設定 */
 .LIST_CONTAINER{
     display: grid;
