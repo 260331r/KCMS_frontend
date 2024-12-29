@@ -51,7 +51,7 @@ body{
     padding-top: 50px;
     gap: 10px;
     margin: 0 auto;
-    width: 90%;
+    width: fit-content;
 }
 
 /* マッチング待ちリストの要素の設定 */
