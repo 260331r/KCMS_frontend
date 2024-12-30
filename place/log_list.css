@@ -39,12 +39,7 @@ body{
     bottom: -5px;
 }
 
-/* 検索機能の枠の設定 */
-.SEARCH_OPTION{
-    margin-top: 50px;
-}
-
-/* マッチング待ちリストの配置設定 */
+/* 出店予定リストの配置設定 */
 .LIST_CONTAINER{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -54,7 +49,7 @@ body{
     width: fit-content;
 }
 
-/* マッチング待ちリストの要素の設定 */
+/* 出店予定リストの要素の設定 */
 .FRAME_DESIGN{
     width: 500px;
     height: 250px;

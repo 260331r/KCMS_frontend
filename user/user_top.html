@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="js">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="user_top.css">
+        <link rel="stylesheet" href="calender.css">
+    </head>
+
+    <body>
+        <div class="COMMON_TEXT USER_TEXT">
+            <span>お客様用トップページ</span>
+        </div>
+
+        <div>
+            <form>
+                <label for="SEARCH_TYPE"></label>
+                <select id="SEARCH_TYPE_BOX">
+                    <option hidden>検索はこちら</option>
+                    <option value='./keyword_search.html'>キーワードで検索</option>
+                    <option value='./genre_search.html'>ジャンル別に検索</option>
+                    <option value='./place_search.html'>地域別に検索</option>
+                </select>
+                <button id="NEXT_BUTTON" class="NEXT_VIEW_BUTTON" type="button">次へ</button>
+            </form>
+        </div>
+
+        <div class="COMMON_TEXT USER_TEXT">出店予定</div>
+        <p></p>
+        <div class="calendar">
+            <div id="calendar_Header" class="calendar_Header">
+                <button id="pre_Month" class="common_Text nav_Button"> < </button>
+                <span id="calendar_Header_Text" class="common_Text "></span>
+                <button id="next_Month" class="common_Text nav_Button"> > </button>
+            </div>
+            <div class="calendar_Body">
+                <div id="calendar_Days" class="calendar_Days"></div>
+            </div>
+        </div>
+
+        <script src="user_top.js"></script>
+        <script src="calender.js"></script>
+    </body>
+    
+</html>
