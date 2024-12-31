@@ -43,11 +43,14 @@ body{
 .BUTTON_CONTAINER {
     display: flex;
     gap: 20px;
+    justify-content: center;  /* 横方向に中央揃え */
+    margin-top: 20px;  /* ボタンとその他の要素に少しスペースを加える */
 }
+
 button {
-    padding: 10px 20px;
+    padding: 20px 40px;
     font-size: 16px;
-    border: none;
+    border: 5px solid #FF7F00;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
@@ -55,7 +58,7 @@ button {
 /*各ボタンのスタイル*/
 .YES_BUTTON {
     background-color: #4CAF50;
-    color: white;
+    color: 5px solid #FF7F00;
 }
 
 .YES_BUTTON:hover {
@@ -64,7 +67,7 @@ button {
 
 .NO_BUTTON {
     background-color: #f44336;
-    color: white;
+    color: 5px solid #FF7F00;
 }
 
 .NO_BUTTON:hover {
