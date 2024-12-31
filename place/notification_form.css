@@ -38,3 +38,44 @@ body{
 .TITLE_TEXT::after{
     bottom: -5px;
 }
+
+/* 出店依頼リストの配置設定 */
+.LIST_CONTAINER{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding-top: 50px;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+/* 出店予定リストの要素の設定 */
+.FRAME_DESIGN{
+    width: 500px;
+    height: 150px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 5px solid #FF7F00;
+}
+
+/* 要素内のスケジュール情報の設定 */
+.SCHEDULE_TEXT{
+    font-size: 20px;
+    position: relative;
+    top: -10px;
+}
+
+/* 要素内のキッチンカー名の設定 */
+.NAME_TEXT{
+    font-size: 30px;
+    color: #FF7F00;
+    position: relative;
+    top: -30px;
+}
+
+/* 要素内のジャンル情報の設定 */
+.GENRE_TEXT{
+    font-size: 20px;
+    position: relative;
+    top: -40px;
+}
