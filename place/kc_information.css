@@ -84,16 +84,37 @@ body{
 }
 
 /* 出店スケジュール */
-.KC_SCHEDULE {
-    display: flex;               
-    justify-content: center;   /* 横方向に中央揃え */
+.LIST_CONTAINER{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     padding-top: 10px;
     gap: 10px;
     margin: 0 auto;
+    width: fit-content;
+}
+
+/* 出店予定リストの枠の設定 */
+.FRAME_DESIGN{
     width: 500px;
-    height: 100px;
+    height: 150px;
     background-color: #FFFFFF;
     text-align: center;
     border: 5px solid #FF7F00;
-    margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
+    margin-bottom: 10px;
+}
+
+/* 要素内のスケジュール情報の設定 */
+.SCHEDULE_TEXT{
+    font-size: 20px;
+}
+
+/* 要素内のキッチンカー名の設定 */
+.PLACE_TEXT{
+    font-size: 30px;
+    color: #FF7F00;
+}
+
+/* 要素内の営業時間の設定 */
+.GENRE_TEXT{
+    font-size: 20px;
 }
