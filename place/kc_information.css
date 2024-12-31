@@ -55,39 +55,45 @@ body{
 
 /* メニュー紹介文 */
 .KC_MENU {
-    width: 500px;
     display: flex;               
     justify-content: center;   /* 横方向に中央揃え */
     padding-top: 10px;
     gap: 10px;
     margin: 0 auto;
-    width: fit-content;
+    width: 500px;
     height: 150px;
     background-color: #FFFFFF;
     text-align: center;
     border: 5px solid #FF7F00;
-    
+    margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
 }
 
 /* 写真 */
 .KC_PHOTO {
     display: flex;               
     justify-content: center;   /* 横方向に中央揃え */
-    padding-top: 150px;
+    padding-top: 0px;
     gap: 10px;
     margin: 0 auto;
     width: fit-content;
-    height: 150px;
-    width: 150px;
+    height: fit-content;
     background-color: #FFFFFF;
     text-align: center;
     border: 5px solid #FF7F00;
-    
+    margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
 }
 
 /* 出店スケジュール */
 .KC_SCHEDULE {
-    padding: 20px;
-    color: rgb(189, 18, 118);
+    display: flex;               
+    justify-content: center;   /* 横方向に中央揃え */
+    padding-top: 10px;
+    gap: 10px;
+    margin: 0 auto;
+    width: 500px;
+    height: 100px;
+    background-color: #FFFFFF;
     text-align: center;
+    border: 5px solid #FF7F00;
+    margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
 }
