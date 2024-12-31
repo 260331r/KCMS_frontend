@@ -1,0 +1,82 @@
+/*虫眼鏡 余裕があれば
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
+*/
+body{
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+select{
+    display:inline-block;
+    justify-content: center; 	
+    border: solid 2px #666;
+    width: 200px;
+    height:50px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+.COMMON_TEXT{
+    font-size: 40px;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+.USER_TEXT{
+    font-size: 60px;
+    margin-top: 50px;
+    position: relative;
+    display: inline-block;
+    width: 800px;
+}
+
+.USER_TEXT::before, 
+.USER_TEXT::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px dashed #FF7F00;
+}
+
+.USER_TEXT::before{
+    top: -5px;
+}
+
+.USER_TEXT::after{
+    bottom: -5px;
+}
+
+.COMMON_BUTTON{
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    margin:0 auto;
+    border: 2px solid #ff7f00;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #ff7f00;
+    font-size: 1em;
+    cursor: pointer;
+}
+.COMMON_BUTTON:hover{
+    box-shadow: 0 5px 0 0 #c86a0c;
+    background-color: #ff7f00;
+    color: #fff;
+}
+
+.INPUT_BOX{
+    position: relative;
+    top: 20px;
+    width: 250px;
+    height: 40px;
+}
