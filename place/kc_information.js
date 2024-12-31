@@ -39,18 +39,20 @@ function make_frame(shop_details){
 
     const shop_schedule = document.createElement("p");
     shop_schedule.className = "SCHEDULE_TEXT";
-    shop_schedule.textContent = "出店した日時 : " + shop_details[2];
+    shop_schedule.textContent = "出店日 : " + shop_details[2];
     frame.append(shop_schedule);
+
+    const shop_genre = document.createElement("p");
+    shop_genre.className = "TINE_TEXT";
+    shop_genre.textContent = "営業時間 : " + shop_details[1];
+    frame.append(shop_genre);
 
     const shop_name = document.createElement("p");
     shop_name.className = "PLACE_TEXT";
     shop_name.textContent = shop_details[0];
     frame.append(shop_name);
 
-    const shop_genre = document.createElement("p");
-    shop_genre.className = "GENRE_TEXT";
-    shop_genre.textContent = "商品ジャンル : " + shop_details[1];
-    frame.append(shop_genre);
+    
 
     return frame;
 }

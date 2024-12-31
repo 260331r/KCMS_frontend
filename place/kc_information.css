@@ -84,37 +84,45 @@ body{
 }
 
 /* 出店スケジュール */
+/* 出店依頼リストの配置設定 */
 .LIST_CONTAINER{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    padding-top: 10px;
+    /*display: flex;                  /* 横並びのフレックスボックスを使用 */
+    /*justify-content: center;*/ 
+    padding-top: 50px;
     gap: 10px;
     margin: 0 auto;
     width: fit-content;
 }
 
-/* 出店予定リストの枠の設定 */
+/* 出店予定リストの要素の設定 */
 .FRAME_DESIGN{
     width: 500px;
     height: 150px;
     background-color: #FFFFFF;
     text-align: center;
     border: 5px solid #FF7F00;
-    margin-bottom: 10px;
+    /*margin-bottom: 5px;*/
 }
 
 /* 要素内のスケジュール情報の設定 */
 .SCHEDULE_TEXT{
     font-size: 20px;
+    position: relative;
+    top: -10px;
+}
+/* 営業時間情報の設定 */
+.TIME_TEXT{
+    font-size: 20px;
+    position: relative;
+    top: -30px;
 }
 
-/* 要素内のキッチンカー名の設定 */
+/* 出店場所情報の設定 */
 .PLACE_TEXT{
     font-size: 30px;
     color: #FF7F00;
-}
-
-/* 要素内の営業時間の設定 */
-.GENRE_TEXT{
-    font-size: 20px;
+    position: relative;
+    top: -30px;
 }
