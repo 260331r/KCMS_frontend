@@ -1,0 +1,93 @@
+/*ページ全体の設定 */
+body{
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+/* ほとんどの文字の共通設定 */
+.COMMON_TEXT{
+    font-size: 40px;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+/* ページのタイトルの設定 */
+.TITLE_TEXT{
+    font-size: 50px;
+    margin-top: 50px;
+    position: relative;
+    display: inline-block;
+    width: 800px;
+}
+
+.TITLE_TEXT::before,
+.TITLE_TEXT::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px dashed #FF7F00;
+}
+
+.TITLE_TEXT::before{
+    top:-5px;
+}
+
+.TITLE_TEXT::after{
+    bottom: -5px;
+}
+
+/* 出店者名*/
+.KC_NAME {
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+/* 商品ジャンル */
+.KC_GENRE {
+    padding: 5px;
+    color: rgb(89, 27, 27);
+    text-align: center;
+}
+
+/* メニュー紹介文 */
+.KC_MENU {
+    width: 500px;
+    display: flex;               
+    justify-content: center;   /* 横方向に中央揃え */
+    padding-top: 10px;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+    height: 150px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 5px solid #FF7F00;
+    
+}
+
+/* 写真 */
+.KC_PHOTO {
+    display: flex;               
+    justify-content: center;   /* 横方向に中央揃え */
+    padding-top: 150px;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+    height: 150px;
+    width: 150px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 5px solid #FF7F00;
+    
+}
+
+/* 出店スケジュール */
+.KC_SCHEDULE {
+    padding: 20px;
+    color: rgb(189, 18, 118);
+    text-align: center;
+}
