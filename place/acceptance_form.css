@@ -39,6 +39,95 @@ body{
     bottom: -5px;
 }
 
+/* 出店者名*/
+.KC_NAME {
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+/* 商品ジャンル */
+.KC_GENRE {
+    padding: 5px;
+    color: rgb(89, 27, 27);
+    text-align: center;
+}
+
+/* メニュー紹介文 */
+.KC_MENU {
+    display: flex;               
+    justify-content: center;   /* 横方向に中央揃え */
+    padding-top: 10px;
+    gap: 10px;
+    margin: 0 auto;
+    width: 500px;
+    height: 150px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 5px solid #FF7F00;
+    margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
+}
+
+/* 写真 */
+.KC_PHOTO {
+    display: flex;               
+    justify-content: center;   /* 横方向に中央揃え */
+    padding-top: 0px;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 5px solid #FF7F00;
+    margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
+}
+
+/* 出店スケジュール */
+/* 出店依頼リストの配置設定 */
+.LIST_CONTAINER{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    /*display: flex;                  /* 横並びのフレックスボックスを使用 */
+    /*justify-content: center;*/ 
+    padding-top: 50px;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+/* 出店予定リストの要素の設定 */
+.FRAME_DESIGN{
+    width: 500px;
+    height: 150px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 5px solid #FF7F00;
+    /*margin-bottom: 5px;*/
+}
+
+/* 要素内のスケジュール情報の設定 */
+.SCHEDULE_TEXT{
+    font-size: 20px;
+    position: relative;
+    top: -10px;
+}
+/* 営業時間情報の設定 */
+.TIME_TEXT{
+    font-size: 20px;
+    position: relative;
+    top: -60px;
+}
+
+/* 出店場所情報の設定 */
+.PLACE_TEXT{
+    font-size: 30px;
+    color: #FF7F00;
+    position: relative;
+    top: -30px;
+}
+
+
 /*ボタン設置*/
 .BUTTON_CONTAINER {
     display: flex;
