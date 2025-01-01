@@ -8,17 +8,12 @@
     <body>
         <span class="COMMON_TEXT TITLE_TEXT">マッチング待ちキッチンカー</span>
 
-        <div class="SEARCH_OPTION">
-            <input id="year">
-            <span>年</span>
-            <select id="month"></select>
-            <span>月</span>
-            <select id="day"></select>
-            <span>日</span>
+        <div>
+            <input id="date" type="date" class="SEARCH_OPTION" required>
             <button id="search_button">検索</button>
         </div>
 
         <div id="list" class="LIST_CONTAINER"></div>
-        <span id="error"></span>
+        <span id="error" class="COMMON_TEXT"></span>
     </body>
 </html>
