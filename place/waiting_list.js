@@ -14,7 +14,7 @@ function init_create_kitchen_list(){
     return 0;
 }
 
-// 与えられた日時情報で絞ってリストを作成する
+// 与えられた日時情報で絞ってリストを作成する関数
 function create_kitchen_list(date, list){
     const searched_elements = db_search_elements(date);
     clear_error_text();
@@ -23,7 +23,7 @@ function create_kitchen_list(date, list){
     return 0;
 }
 
-// リストに表示する枠を作成する
+// リストに表示する枠を量産する関数
 function create_kitchen_frame_list(shop_array, list){
     for(let i = 0; i < shop_array.length; i++){
         const frame = make_frame(shop_array[i]);
@@ -33,6 +33,7 @@ function create_kitchen_frame_list(shop_array, list){
     return 0;
 }
 
+// リストに表示する枠を作成する関数
 function make_frame(shop_details){
     const frame = document.createElement("div");
     frame.className = "FRAME_DESIGN";
