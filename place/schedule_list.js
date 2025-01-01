@@ -49,7 +49,7 @@ function make_frame(shop_details){
 
 // データベースから本日以降のすべての提供予定の要素を取得する関数
 async function db_all_elements(user_id){
-    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_schedule_check", {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/schedule_check", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
