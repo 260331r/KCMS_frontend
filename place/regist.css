@@ -52,7 +52,7 @@ body{
     font-size: 15px;
 }
 
-.RESIST_BUTTON{
+.REGIST_BUTTON{
     border-radius:8px; 
     border-color: #FF7F00;
     font-size:30px;
@@ -62,7 +62,7 @@ body{
     margin-bottom: 50px;
 }
 
-.RESIST_BUTTON:hover{
+.REGIST_BUTTON:hover{
     background-color: #ff7f00; 
     color: #ffffff;
 }
