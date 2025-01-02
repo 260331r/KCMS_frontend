@@ -1,0 +1,68 @@
+/* ページ全体の設定 */
+body{
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+/* ほとんどの文字の共通設定 */
+.COMMON_TEXT{
+    font-size: 25px;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+/* ページのタイトルの設定 */
+.TITLE_TEXT{
+    font-size: 50px;
+    margin-top: 50px;
+    position: relative;
+    display: inline-block;
+    width: 800px;
+}
+
+.TITLE_TEXT::before,
+.TITLE_TEXT::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px dashed #FF7F00;
+}
+
+.TITLE_TEXT::before{
+    top:-5px;
+}
+
+.TITLE_TEXT::after{
+    bottom: -5px;
+}
+
+.INPUT_CONTAINER{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 50px;
+    gap: 20px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.INPUT_TEXT{
+    font-size: 15px;
+}
+
+.UPDATE_BUTTON{
+    border-radius:8px; 
+    border-color: #FF7F00;
+    font-size:30px;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #FF7F00;
+    margin-bottom: 50px;
+}
+
+.UPDATE_BUTTON:hover{
+    background-color: #ff7f00; 
+    color: #ffffff;
+}
