@@ -63,13 +63,13 @@ body{
     font-size: 20px;
 }
 
-/* 要素内の出店場所名の設定 */
+/* 要素内のキッチンカー名の設定 */
 .NAME_TEXT{
     font-size: 30px;
     color: #FF7F00;
 }
 
-/* 要素内の住所の設定 */
+/* 要素内のジャンルの設定 */
 .ADDRESS_TEXT{
     font-size: 20px;
 }
