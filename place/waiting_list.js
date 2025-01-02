@@ -61,7 +61,7 @@ function make_frame(shop_details){
 
 // データベースからすべてのマッチング待ちキッチンカーの要素を取得する関数
 async function db_all_elements(){
-    const response = await fetch("http://127.0.0.1:8000/api/locate/get_store_infor", {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_matching_request", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
