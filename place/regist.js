@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 // 登録ボタンに登録機能を与える関数
 function give_function_regist_button(){
-    const resist_button = document.getElementById("resist_button");
+    const resist_button = document.getElementById("regist_button");
     resist_button.addEventListener("click", () => {
         const check_flag = check_info();
         if (check_flag){
