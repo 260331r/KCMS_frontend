@@ -39,7 +39,7 @@ function make_frame(shop_details){
 
     const shop_schedule = document.createElement("p");
     shop_schedule.className = "SCHEDULE_TEXT";
-    shop_schedule.textContent = "出店した日時 : " + shop_details[2];
+    shop_schedule.textContent = "出店希望日 : " + shop_details[2];
     frame.append(shop_schedule);
 
     const shop_name = document.createElement("p");
@@ -49,7 +49,7 @@ function make_frame(shop_details){
 
     const shop_genre = document.createElement("p");
     shop_genre.className = "GENRE_TEXT";
-    shop_genre.textContent = "商品ジャンル : " + shop_details[1];
+    shop_genre.textContent = "住所 : " + shop_details[1];
     frame.append(shop_genre);
 
     return frame;
@@ -60,7 +60,7 @@ function make_frame(shop_details){
 // スケジュールテーブルから、日時がnullでないものかつ、場所提供者IDが自身と一致しているものを取り出す
 function db_all_elements(year, month, day){
     // テストのため適当に配列を作っているだけ
-    return [["おにぎり屋", "おにぎり", 4], ["やきそば屋","やきそば",5]];
+    return [["高知工科大学", "高知県香美市○○", 4], ["セイムス北本町店","高知県香美市北本町",5]];
 }
 
 
