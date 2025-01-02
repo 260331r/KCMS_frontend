@@ -61,7 +61,7 @@ function make_frame(shop_details){
 
 // データベースからすべてのマッチング待ちキッチンカーの要素を取得する関数
 async function db_all_elements(){
-    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_matching_request", {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_matching_request/get_store_info", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -83,7 +83,7 @@ async function db_all_elements(){
 
 // データベースから条件で絞った要素を取得する関数
 async function db_search_elements(date){
-    const response = await fetch("http://127.0.0.1:8000/api/locate/get_store_date", {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_matching_request/get_store_date", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
