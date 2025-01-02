@@ -15,8 +15,8 @@ function init_create_kitchen_list(){
 }
 
 // 与えられた日時情報で絞ってリストを作成する
-function create_kitchen_list(date, list){
-    const searched_elements = db_search_elements(date);
+async function create_kitchen_list(date, list){
+    const searched_elements = await db_search_elements(date);
     clear_error_text();
     create_kitchen_frame_list(searched_elements, list);
     
