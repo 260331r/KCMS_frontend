@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // すべての日時のリストを作成する関数
-function init_create_kitchen_list(){
-    const all_elements = db_all_elements();
+async function init_create_kitchen_list(){
+    const all_elements = await db_all_elements();
     const list = document.getElementById("list");
     clear_error_text();
     create_kitchen_frame_list(all_elements, list);
@@ -26,8 +26,7 @@ async function create_kitchen_list(date, list){
 // リストに表示する枠を作成する
 function create_kitchen_frame_list(shop_array, list){
     for(let i = 0; i < shop_array.length; i++){
-        const shop_details = [shop_array[i].店舗ID, shop_array[i].日時, shop_array[i].出店者, shop_array[i].商品ジャンル];
-        const frame = make_frame(shop_details);
+        const frame = make_frame(shop_array[i]);
         list.append(frame);
     }
 
@@ -40,17 +39,17 @@ function make_frame(shop_details){
 
     const shop_schedule = document.createElement("p");
     shop_schedule.className = "SCHEDULE_TEXT";
-    shop_schedule.innerText = "出店希望日時 : " + shop_details[1];
+    shop_schedule.innerText = "出店希望日時 : " + shop_details.日時;
     frame.append(shop_schedule);
 
     const shop_name = document.createElement("p");
     shop_name.className = "NAME_TEXT";
-    shop_name.innerText = shop_details[2];
+    shop_name.innerText = shop_details.出店者名;
     frame.append(shop_name);
 
     const shop_genre = document.createElement("p");
     shop_genre.className = "GENRE_TEXT";
-    shop_genre.innerText = "商品ジャンル : " + shop_details[3];
+    shop_genre.innerText = "商品ジャンル : " + shop_details.商品ジャンル;
     frame.append(shop_genre);
 
     frame.addEventListener("click", () => {
