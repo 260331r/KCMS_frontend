@@ -42,7 +42,7 @@ async function db_regist_info(){
     const res = document.getElementById("response").value;
     const remark = document.getElementById("remark").value;
 
-    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_account_regist", {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_account_regist/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
