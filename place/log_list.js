@@ -55,7 +55,7 @@ async function db_all_elements(user_id){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "user_id": user_id
+            "user_id": {"ユーザID": user_id}
         })
     });
 
