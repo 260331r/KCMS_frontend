@@ -42,7 +42,7 @@ function check_info(){
         return false;
     }
 
-    const name = document.getElementById("shop_name").value;
+    const name = document.getElementById("place_name").value;
     if(name.length <= 0){
         text_box.innerText = "場所名は記入必須です";
         return false;
@@ -79,8 +79,8 @@ function check_info(){
 // データベースに情報を登録する関数
 async function db_regist_info(){
     const email = document.getElementById("email").value;
-    const pass = document.getElementById("pass1").value;
-    const name = document.getElementById("shop_name").value;
+    const pass = document.getElementById("password1").value;
+    const name = document.getElementById("place_name").value;
     const address = document.getElementById("place_address").value;
     const city = document.getElementById("city").value;
     const tel = document.getElementById("tel_num").value;
@@ -106,11 +106,13 @@ async function db_regist_info(){
         if (!response.ok || !result) {
             create_can_not_regist_text();
         }
+
+        return result;
     } catch (error) {
         create_server_error_text();
     }
 
-    return result;
+    return false;
 }
 
 // 地域選択の要素を作成する関数
