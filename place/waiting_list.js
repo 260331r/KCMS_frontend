@@ -39,17 +39,17 @@ function make_frame(shop_details){
 
     const shop_schedule = document.createElement("p");
     shop_schedule.className = "SCHEDULE_TEXT";
-    shop_schedule.textContent = "出店希望日時 : " + shop_details.日時;
+    shop_schedule.innerText = "出店希望日時 : " + shop_details.日時;
     frame.append(shop_schedule);
 
     const shop_name = document.createElement("p");
     shop_name.className = "NAME_TEXT";
-    shop_name.textContent = shop_details.出店者名;
+    shop_name.innerText = shop_details.出店者名;
     frame.append(shop_name);
 
     const shop_genre = document.createElement("p");
     shop_genre.className = "GENRE_TEXT";
-    shop_genre.textContent = "商品ジャンル : " + shop_details.商品ジャンル;
+    shop_genre.innerText = "商品ジャンル : " + shop_details.商品ジャンル;
     frame.append(shop_genre);
 
     frame.addEventListener("click", () => {
@@ -143,7 +143,7 @@ function clear_error_text(){
 // 検索結果が見つからなかった時のエラー文を表示する関数
 function create_not_search_text(){
     const text_box = document.getElementById("error");
-    text_box.textContent = "検索結果が見つかりませんでした";
+    text_box.innerText = "検索結果が見つかりませんでした";
 
     return 0;
 }
@@ -151,7 +151,7 @@ function create_not_search_text(){
 // データベースとの通信でエラーが起こった場合のエラー文を表示する関数
 function create_server_error_text(){
     const text_box = document.getElementById("error");
-    text_box.textContent = "サーバーエラーが起こりました";
+    text_box.innerText = "サーバーエラーが起こりました";
 
     return 0;
 }
