@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 本日以前のすべての日時のリストを作成する関数
-function init_create_log_list(){
+async function init_create_log_list(){
     const user_id = localStorage.getItem("user_id");
-    const all_elements = db_all_elements(user_id);
+    const all_elements = await db_all_elements(user_id);
     const list = document.getElementById("list");
 
     create_kitchen_frame_list(all_elements, list);
@@ -65,11 +65,13 @@ async function db_all_elements(user_id){
         if (!response.ok || !result || result.length <= 0) {
             create_not_search_text();
         }
+
+        return result;
     } catch (error) {
         create_server_error_text();
     }
 
-    return result;
+    return false;
 }
 
 // 検索結果が見つからなかった時のエラー文を表示する関数
