@@ -77,8 +77,7 @@ async function db_all_elements(user_id){
 // 検索結果が見つからなかった時のエラー文を表示する関数
 function create_error_text(){
     const text_box = document.getElementById("error");
-    text_box.className = "COMMON_TEXT";
-    text_box.textContent = "検索結果が見つかりませんでした";
+    text_box.innerText = "検索結果が見つかりませんでした";
 
     return 0;
 }
@@ -86,7 +85,7 @@ function create_error_text(){
 // データベースとの通信でエラーが起こった場合のエラー文を表示する関数
 function create_server_error_text(){
     const text_box = document.getElementById("error");
-    text_box.textContent = "サーバーエラーが起こりました";
+    text_box.innerText = "サーバーエラーが起こりました";
 
     return 0;
 }
