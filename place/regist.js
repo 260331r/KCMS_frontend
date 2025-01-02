@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", () =>{
     give_function_regist_button();
 });
 
-// 登録ボタンに登録機能を与える関数
+// 更新ボタンに登録機能を与える関数
 function give_function_regist_button(){
-    const resist_button = document.getElementById("regist_button");
-    resist_button.addEventListener("click", () => {
+    const regist_button = document.getElementById("regist_button");
+    regist_button.addEventListener("click", () => {
         const check_flag = check_info();
         if (check_flag){
             db_regist_info();
@@ -18,15 +18,62 @@ function give_function_regist_button(){
 
 // 入力情報をチェックする関数
 function check_info(){
+    const text_box = document.getElementById("error");
+
+    const email = document.getElementById("email").value;
+    const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(email.length <= 0){
+        text_box.innerText = "メールアドレスは記入必須です";
+        return false;
+    }
+    if(!email_pattern.test(email)){
+        text_box.innerText = "正しいメールアドレス形式を入力してください";
+        return false;
+    }
+
     const pass1 = document.getElementById("password1").value;
     const pass2 = document.getElementById("password2").value;
-
     if(pass1 != pass2){
-        create_pass_not_same_text();
+        text_box.innerText = "パスワードが異なります";
         return false;
-    }else{
-        return true;
     }
+    if(pass1.length < 8){
+        text_box.innerText = "パスワードを8文字以上入力してください";
+        return false;
+    }
+
+    const name = document.getElementById("shop_name").value;
+    if(name.length <= 0){
+        text_box.innerText = "場所名は記入必須です";
+        return false;
+    }
+
+    const address = document.getElementById("place_address").value;
+    if(address.length <= 0){
+        text_box.innerText = "住所は記入必須です";
+        return false;
+    }
+
+    const tel = document.getElementById("tel_num").value;
+    const tel_pattern = /[0-9]{11}/;
+    if(!tel_pattern.test(tel)){
+        text_box.innerText = "電話番号は半角数字11文字を入力してください";
+        return false;
+    }
+
+    const contact1 = document.getElementById("contact1").value;
+    if(contact1.length <= 0){
+        text_box.innerText = "連絡手段1は記入必須です";
+        return false;
+    }
+
+    const res = document.getElementById("response").value;
+    if(res.length <= 0){
+        text_box.innerText = "責任者名は記入必須です";
+        return false;
+    }
+
+    return true;
 }
 
 // データベースに情報を登録する関数
@@ -78,23 +125,17 @@ function create_options(){
     for(let i = 0; i < options_array.length; i++){
         const option = document.createElement("option");
         option.value = options_array[i];
-        option.textContent = options_array[i];
+        option.innerText = options_array[i];
         select_box.append(option);
     }
     
     return 0;
 }
 
-// 入力されたパスワード2つが一致していない時のエラー文を表示する関数
-function create_pass_not_same_text(){
-    const text_box = document.getElementById("error");
-    text_box.textContent = "パスワードが異なります";
-}
-
 // 正しい入力がされていなかったときのエラー文を表示する関数
 function create_can_not_regist_text(){
     const text_box = document.getElementById("error");
-    text_box.textContent = "不適切な入力があります";
+    text_box.innerText = "不適切な入力があります";
 
     return 0;
 }
@@ -102,7 +143,7 @@ function create_can_not_regist_text(){
 // データベースとの通信でエラーが起こった場合のエラー文を表示する関数
 function create_server_error_text(){
     const text_box = document.getElementById("error");
-    text_box.textContent = "サーバーエラーが起こりました";
+    text_box.innerText = "サーバーエラーが起こりました";
 
     return 0;
 }
