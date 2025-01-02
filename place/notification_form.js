@@ -39,7 +39,7 @@ function make_frame(shop_details){
 
     const shop_schedule = document.createElement("p");
     shop_schedule.className = "SCHEDULE_TEXT";
-    shop_schedule.textContent = "出店した日時 : " + shop_details[2];
+    shop_schedule.textContent = "出店希望日 : " + shop_details[2];
     frame.append(shop_schedule);
 
     const shop_name = document.createElement("p");
