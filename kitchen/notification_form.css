@@ -65,7 +65,7 @@ body{
     top: -10px;
 }
 
-/* 要素内のキッチンカー名の設定 */
+/* 要素内の場所提供者名の設定 */
 .NAME_TEXT{
     font-size: 30px;
     color: #FF7F00;
@@ -73,7 +73,7 @@ body{
     top: -30px;
 }
 
-/* 要素内のジャンル情報の設定 */
+/* 要素内の住所情報の設定 */
 .GENRE_TEXT{
     font-size: 20px;
     position: relative;
