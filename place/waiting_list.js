@@ -74,11 +74,13 @@ async function db_all_elements(){
         if (!response.ok || !result || result.length <= 0) {
             create_not_search_text();
         }
+
+        return result;
     } catch (error) {
         create_server_error_text();
     }
 
-    return result;
+    return false;
 }
 
 // データベースから条件で絞った要素を取得する関数
@@ -89,7 +91,7 @@ async function db_search_elements(date){
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "date": date
+            "date": {"日時": date}
         })
     });
 
@@ -99,11 +101,13 @@ async function db_search_elements(date){
         if (!response.ok || !result || result.length <= 0) {
             create_not_search_text();
         }
+
+        return result;
     } catch (error) {
         create_server_error_text();
     }
 
-    return result;
+    return false;
 }
 
 // 検索ボタンに検索機能を与える関数
