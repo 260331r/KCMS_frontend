@@ -57,12 +57,12 @@ body{
     border-color: #FF7F00;
     font-size:30px;
     cursor: pointer;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     color: #FF7F00;
     margin-bottom: 50px;
 }
 
 .UPDATE_BUTTON:hover{
-    background-color: #ff7f00; 
-    color: #ffffff;
+    background-color: #FF7F00; 
+    color: #FFFFFF;
 }
