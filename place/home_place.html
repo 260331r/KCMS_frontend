@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--場所提供者向けホーム画面-->
+<!--カレンダーを表示する関数calender.jsとスタイルシートcalender.cssを借りて作っています-->
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="home_place.css">
+        <link rel="stylesheet" href="calender.css">
+    </head>
+    <body>
+        <div>
+            <!--user/genre_search.htmlからのコピペ　idまわりは未実装-->
+            <input id="JENRE_INPUT" class="input_box" placeholder="検索" autocomplete="off">
+            <button id="SEARCH_BUTTON" class="common_button">次へ</button>
+        </div>
+
+        <div class = "common_text user_text">出店予定</div>
+
+        <!--カレンダー-->
+        <div class="calendar">
+            <div id="calendar_Header" class="calendar_Header">
+                <button id="pre_Month" class="common_Text nav_Button"></button>
+                <span id="calendar_Header_Text" class="common_Text "></span>
+                <button id="next_Month" class="common_Text nav_Button"></button>
+            </div>
+            <div class="calendar_Body">
+                <div id="calendar_Days" class="calendar_Days"></div>
+            </div>
+        </div>
+
+        <script src="calender.js"></script>
+
+        
+
+        <!--アイコン-->
+        <!--カレンダーと被るのを防止するために無理やり空白いれてる-->
+        <div class="margin"></div>
+
+        <div class = "field">
+            <div class="card">
+                <div class="icon_explanation">出店履歴表示</div>
+                <!--アイコンの画像用意してないのでボタンで代用してます-->
+                <button class="icon_button">画像</button>
+            </div>
+            <div class="card">
+                <div class="icon_explanation">依頼</div>
+                <button class="icon_button">画像</button>
+            </div>
+            <div class="card">
+                <div class="icon_explanation">掲載</div>
+                <button class="icon_button">画像</button>
+            </div>
+        </div>
+
+        <div class = "field">
+            <div class="card">
+                <div class="icon_explanation">登録</div>
+                <button class="icon_button">画像</button>
+            </div>
+            <div class="card">
+                <div class="icon_explanation">通知</div>
+                <button class="icon_button">画像</button>
+            </div>
+            <div class="card">
+                <div class="icon_explanation">マイページ</div>
+                <button class="icon_button">画像</button>
+            </div>
+        </div>
+
+    </body>
+</html>

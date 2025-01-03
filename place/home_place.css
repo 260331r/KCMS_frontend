@@ -1,0 +1,91 @@
+body{
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+.common_text{
+    font-size: 40px;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+.common_center{
+    text-align: center;
+}
+
+.user_text{
+    font-size: 60px;
+    margin-top: 50px;
+    position: relative;
+    display: inline-block;
+    width: 800px;
+}
+
+.user_text::before, 
+.user_text::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px dashed #FF7F00;
+}
+
+.user_text::before{
+    top: -5px;
+}
+
+.user_text::after{
+    bottom: -5px;
+}
+
+
+.common_button{
+    border-radius:8px;
+    border-color: #FF7F00;
+    font-size:40px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #FF7F00;
+}
+
+.input_box{
+    position: relative;
+    top: 20px;
+    width: 250px;
+    height: 40px;
+}
+
+.field{
+    /*横並び*/
+    display: flex;
+    justify-content: center;
+}
+
+.card{
+    /*横並びにしたパーツの中身 fieldの中の四角枠*/
+    margin:10px;    /*枠と枠の間の空白*/ 
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+.icon_explanation{
+    font-size: 20px;
+    color: #FF7F00;
+}
+
+.icon_button{
+    /*アイコン用，common_buttonからフォントサイズが小さいだけ*/
+    border-radius:8px;
+    border-color: #FF7F00;
+    font-size:20px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #FF7F00;
+}
+
+.margin{
+    margin-top: 430px;
+}
