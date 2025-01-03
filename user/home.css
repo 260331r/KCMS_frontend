@@ -1,0 +1,114 @@
+body{
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+.common_text{
+    font-size: 40px;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+.user_text{
+    font-size: 60px;
+    margin-top: 50px;
+    position: relative;
+    display: inline-block;
+    width: 800px;
+}
+
+.user_text::before, 
+.user_text::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px dashed #FF7F00;
+}
+
+.user_text::before{
+    top: -5px;
+}
+
+.user_text::after{
+    bottom: -5px;
+}
+
+.common_button{
+    border-radius:8px;
+    border-color: #FF7F00;
+    font-size:40px;
+    margin-top: 30px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #FF7F00;
+}
+
+.input_box{
+    position: relative;
+    top: 20px;
+    width: 250px;
+    height: 40px;
+}
+
+
+.field{
+    /*横並び*/
+    display: flex;
+}
+
+.card{
+    /*横並びにしたパーツの中身 fieldの中の四角枠*/
+    /*border: #FF7F00 8px solid; /*境界線の指定*/
+    /*padding:10px;*/
+    margin:10px;    /*枠と枠の間の空白*/ 
+    width: 250px;
+    height: 300px;
+    border: 2px solid #FF7F00;
+    background-color: #FFFFFF;
+
+    /*font-size: 40px;*/
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+.photo {
+    /*写真*/
+    /*中身　place/acceptance_form.cssのコピペ*/
+    display: flex;               
+    justify-content: center;   /* 横方向に中央揃え */
+    padding-top: 0px;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+    height: fit-content;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 5px solid #FF7F00;
+    margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
+}
+
+.kc_name{
+    font-size: 30px;
+    color: crimson;
+    text-align: left;
+}
+
+.kc_genre{
+    color: #FF7F00;
+    font-size: 20px;
+    text-align: left;
+}
+
+.kc_area{
+    color: black;
+    border: 2px solid #FF7F00;
+    font-size: 20px;
+}
+
+.kc_address{
+    color: black;
+    font-size: 20px;
+}
