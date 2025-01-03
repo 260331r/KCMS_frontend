@@ -11,9 +11,13 @@ function give_function_login_button(){
         const email = document.getElementById("email").value;
         const pass = document.getElementById("password").value;
         const user_id = await db_check_login_info(email, pass);
-        if(user_id){
+        if(user_id.length > 0){
             localStorage.setItem("user_id", user_id.ユーザID);
-            // ここでユーザが場所提供者か出店者かで飛ばすトップページ先を変える
+            if(user_id.場所ID == null){
+                // ここで出店者用トップページに飛ばす
+            }else{
+                // ここで場所提供者用トップページに飛ばす
+            }
         }
     });
 }
@@ -40,7 +44,7 @@ async function db_regist_info(email, pass){
     try {
         const result = await response.json();
 
-        if (!response.ok || !result) {
+        if (!response.ok || !result || result.length <= 0) {
             create_can_not_login_text();
         }
 
