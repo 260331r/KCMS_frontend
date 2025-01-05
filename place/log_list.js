@@ -75,7 +75,7 @@ async function db_all_elements(user_id){
 }
 
 // 検索結果が見つからなかった時のエラー文を表示する関数
-function create_error_text(){
+function create_not_search_text(){
     const text_box = document.getElementById("error");
     text_box.innerText = "検索結果が見つかりませんでした";
 
