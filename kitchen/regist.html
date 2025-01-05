@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="regist.css">
+        <script src="regist.js"></script>
+    </head>
+    <body>
+        <span class="COMMON_TEXT TITLE_TEXT">出店者アカウント登録</span>
+
+        <div class="INPUT_CONTAINER">
+            <span class="COMMON_TEXT">メールアドレス</span>
+            <input id="email" class="INPUT_TEXT" type="email" placeholder="kitchen@sample.com" maxlength="256" required>
+            <span class="COMMON_TEXT">パスワード</span>
+            <input id="password1" class="INPUT_TEXT" type="password" minlength="8" maxlength="20" required>
+            <span class="COMMON_TEXT">パスワード（確認）</span>
+            <input id="password2" class="INPUT_TEXT" type="password" minlength="8" maxlength="20" required>
+            <span class="COMMON_TEXT">出店者名</span>
+            <input id="shop_name" class="INPUT_TEXT" required>
+            <span class="COMMON_TEXT">商品ジャンル</span>
+            <input id="genre" class="INPUT_TEXT" maxlength="40" required>
+            <span class="COMMON_TEXT">出店条件</span>
+            <textarea id="terms" rows="5" cols="30" maxlength="100"></textarea>
+            <span class="COMMON_TEXT">電話番号</span>
+            <input id="tel_num" class="INPUT_TEXT" type="tel" pattern="[0-9]{11}" placeholder="09012345678" required>
+            <span class="COMMON_TEXT">連絡手段1（必須）</span>
+            <input id="contact1" class="INPUT_TEXT" maxlength="20" required>
+            <span class="COMMON_TEXT">連絡手段2（任意）</span>
+            <input id="contact2" class="INPUT_TEXT" maxlength="20">
+            <span class="COMMON_TEXT">責任者名</span>
+            <input id="response" class="INPUT_TEXT" maxlength="20" required>
+            <span class="COMMON_TEXT">備考</span>
+            <textarea id="remark" rows="5" cols="30" maxlength="100"></textarea>
+        </div>
+        <p id="error" class="COMMON_TEXT" style="padding-top: 30px;"></p>
+        <button id="regist_button" class="REGIST_BUTTON">登録</button>
+    </body>
+</html>
