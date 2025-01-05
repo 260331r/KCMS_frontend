@@ -33,12 +33,17 @@ function check_info(){
 
     const pass1 = document.getElementById("password1").value;
     const pass2 = document.getElementById("password2").value;
+    const check_pass = /^[\x20-\x7E]+$/;
     if(pass1 != pass2){
         text_box.innerText = "パスワードが異なります";
         return false;
     }
     if(pass1.length < 8){
         text_box.innerText = "パスワードを8文字以上入力してください";
+        return false;
+    }
+    if(check_pass.test(pass1)){
+        text_box.innerText = "パスワードは半角文字のみを用いてください"
         return false;
     }
 
