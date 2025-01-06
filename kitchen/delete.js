@@ -48,6 +48,7 @@ function make_page_last_check(){
     yes_button.addEventListener("click", () => {
         const user_id = localStorage("user_id");
         db_delete_shop(user_id);
+        localStorage.removeItem("user_id");
     });
 
     const error_text = document.createElement("span");
