@@ -1,0 +1,91 @@
+/*ページ全体の設定 */
+body{
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+/* ほとんどの文字の共通設定 */
+.COMMON_TEXT{
+    font-size: 30px;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+/* ページのタイトルの設定 */
+.TITLE_TEXT{
+    font-size: 50px;
+    margin-top: 50px;
+    position: relative;
+    display: inline-block;
+    width: 800px;
+}
+
+.TITLE_TEXT::before,
+.TITLE_TEXT::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px dashed #FF7F00;
+}
+
+.TITLE_TEXT::before{
+    top:-5px;
+}
+
+.TITLE_TEXT::after{
+    bottom: -5px;
+}
+
+/* 出店者名*/
+.PLACE_NAME {
+    padding: 15px;
+}
+
+/* 住所 */
+.PLACE_ADDRESS {
+    padding: 10px;
+}
+
+/* 出店スケジュール */
+/* 出店依頼リストの配置設定 */
+.LIST_CONTAINER{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding-top: 50px;
+    gap: 10px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+/* 出店予定リストの要素の設定 */
+.FRAME_DESIGN{
+    width: 500px;
+    height: 150px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border: 5px solid #FF7F00;
+    /*margin-bottom: 5px;*/
+}
+
+/* 要素内のスケジュール情報の設定 */
+.SCHEDULE_TEXT{
+    font-size: 20px;
+    position: relative;
+    top: -10px;
+}
+/* 営業時間情報の設定 */
+.TIME_TEXT{
+    font-size: 20px;
+    position: relative;
+    top: -10px;
+}
+
+/* 出店場所情報の設定 */
+.NAME_TEXT{
+    font-size: 20px;
+    position: relative;
+    top: -10px;
+}
