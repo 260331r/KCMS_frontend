@@ -76,14 +76,37 @@ body{
 }
 
 .icon_button{
-    /*アイコン用，common_buttonからフォントサイズが小さいだけ*/
     border-radius:8px;
-    border-color: #FF7F00;
-    font-size:20px;
     margin-top: 10px;
     cursor: pointer;
-    background-color: #FFFFFF;
-    color: #FF7F00;
+}
+
+.icon_gray{
+    color:gray;
+}
+
+.icon_darkslategray{
+    color: darkslategray;
+}
+
+.icon_chocolate{
+    color: chocolate;
+}
+
+.icon_darkslateblue{
+    color: darkslateblue;
+}
+
+.icon_darkgreen{
+    color: darkgreen;
+}
+
+.icon_slateblue{
+    color: slateblue;
+}
+
+.icon_coral{
+    color: coral;
 }
 
 .margin{
