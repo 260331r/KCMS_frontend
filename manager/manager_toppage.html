@@ -5,57 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理者トップページ</title>
     <style>
+        /* 背景色 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff8e5;
+            background-color: #FFFDD0; /* 背景色 */
         }
 
+        /* ヘッダー */
         header {
-            background-color: #6b5b4d;
+            background-color: #FF7F00; /* 文字色を利用した背景色 */
             color: white;
             text-align: center;
             padding: 10px 0;
             font-size: 1.5em;
         }
 
+        /* 検索バー */
         .search-bar {
             display: flex;
             justify-content: center;
             margin: 50px 0;
         }
 
+        /* 入力フィールド */
         .search-bar input {
             width: 250px;
             padding: 10px;
-            border: 2px solid #6b5b4d;
+            border: 2px solid #FF7F00; /* 文字色を利用した枠線 */
             border-radius: 5px 0 0 5px;
             font-size: 1em;
         }
 
+        /* 検索ボタン */
         .search-bar button {
             padding: 10px 20px;
-            background-color: #f4b183;
-            color: #6b5b4d;
-            border: 2px solid #6b5b4d;
+            background-color: #FFFFFF; /* ボタン背景色 */
+            color: #FF7F00; /* ボタン文字色 */
+            border: 2px solid #FF7F00; /* ボタン縁の色 */
             border-left: none;
             border-radius: 0 5px 5px 0;
             font-size: 1em;
             cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
+        /* 検索ボタン押下時 */
         .search-bar button:hover {
-            background-color: #6b5b4d;
-            color: white;
+            background-color: #FF7F00; /* 押下時の背景色 */
+            color: white; /* 押下時の文字色 */
         }
     </style>
 </head>
 <body>
+    <!-- ヘッダー -->
     <header>
         管理者トップページ
     </header>
 
+    <!-- 検索バー -->
     <div class="search-bar">
         <input type="text" placeholder="IDを入力してください">
         <button>検索</button>
