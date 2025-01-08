@@ -1,30 +1,48 @@
-// 初期設定
 document.addEventListener("DOMContentLoaded", () => {
     init_create_schedule_list();
 });
 
 // キッチンカーの出店日時のリストを作成する関数
-function init_create_schedule_list(){
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1; 
-    const day = date.getDate();
+async function init_create_schedule_list() {
+    const user_id = 1; // ユーザーIDを取得
 
-    const all_elements = db_all_elements(year, month, day);  // 本日以降の出店予定を取得
-    const list = document.getElementById("list");
+    try {
+        // サーバーから本日以降の出店予定を取得
+        const all_elements = await fetch_schedule_from_server(user_id);
+        const list = document.getElementById("list");
 
-    if (all_elements.length > 0) {
-        create_schedule_frame_list(all_elements, list);  // 出店予定があればリストを作成
-    } else {
-        create_error_text(list);  // 出店予定がなければエラーメッセージを表示
+        if (all_elements.length > 0) {
+            create_schedule_frame_list(all_elements, list); // 出店予定があればリストを作成
+        } else {
+            create_error_text(list); // 出店予定がなければエラーメッセージを表示
+        }
+    } catch (error) {
+        console.error("スケジュールの取得に失敗しました:", error);
+        create_error_text(document.getElementById("list")); // エラー時もエラーメッセージを表示
+    }
+}
+
+// サーバーからスケジュールを取得する関数
+async function fetch_schedule_from_server(user_id) {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_schedule_check/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ user_id: user_id })
+    });
+
+    if (!response.ok) {
+        throw new Error("サーバーエラー: スケジュール取得に失敗しました");
     }
 
-    return 0;
+    const data = await response.json();
+    return data || []; // データが空の場合は空配列を返す
 }
 
 // リストの枠を量産する関数
-function create_schedule_frame_list(shop_array, list){
-    for(let i = 0; i < shop_array.length; i++){
+function create_schedule_frame_list(shop_array, list) {
+    for (let i = 0; i < shop_array.length; i++) {
         const frame = make_frame(shop_array[i]);
         list.append(frame);
     }
@@ -33,43 +51,34 @@ function create_schedule_frame_list(shop_array, list){
 }
 
 // リストに表示する枠を作成する
-function make_frame(shop_details){
+function make_frame(shop_details) {
     const frame = document.createElement("div");
     frame.className = "FRAME_DESIGN";
 
     const shop_schedule = document.createElement("p");
     shop_schedule.className = "SCHEDULE_TEXT";
-    shop_schedule.textContent = "出店日 : " + shop_details[0] + "月" + shop_details[1] + "日";
+    shop_schedule.textContent = "出店日 : " + shop_details.month + "月" + shop_details.day + "日";
     frame.append(shop_schedule);
 
     const shop_genre = document.createElement("p");
     shop_genre.className = "NAME_TEXT";
-    shop_genre.textContent = "店舗名 : " + shop_details[2];
+    shop_genre.textContent = "店舗名 : " + shop_details.shop_name;
     frame.append(shop_genre);
 
     const shop_name = document.createElement("p");
     shop_name.className = "TIME_TEXT";
-    shop_name.textContent = "営業時間 : " + shop_details[3] + "時〜" + shop_details[4] + "時";
+    shop_name.textContent = "営業時間 : " + shop_details.start_time + "時〜" + shop_details.end_time + "時";
     frame.append(shop_name);
-
-    
 
     return frame;
 }
 
-// データベースから本日以降のすべての提供予定の要素を取得する関数
-// [[出店月, 出店日, 店舗名, 営業開始時間, 営業終了時間], ...]のような形式
-// スケジュールテーブルから、日時がnullでないものかつ、場所提供者IDが自身と一致しているものを取り出す
-function db_all_elements(year, month, day, a, b){
-    // テストのため適当に配列を作っているだけ
-    return [[1, 1, 4, 10, 18]];
-}
-
 // エラー文を表示する関数
-function create_error_text(){
-    const text_box = document.getElementById("error");
+function create_error_text(list) {
+    const text_box = document.createElement("div");
     text_box.className = "COMMON_TEXT";
     text_box.textContent = "検索結果が見つかりませんでした";
+    list.append(text_box);
 
     return 0;
 }
