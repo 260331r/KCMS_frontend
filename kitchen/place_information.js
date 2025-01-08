@@ -29,7 +29,9 @@ async function fetch_schedule_from_server(user_id) {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ user_id: user_id })
+        body: JSON.stringify({
+            "user_id":{"ユーザID":user_id}
+        })
     });
 
     if (!response.ok) {
@@ -57,18 +59,18 @@ function make_frame(shop_details) {
 
     const shop_schedule = document.createElement("p");
     shop_schedule.className = "SCHEDULE_TEXT";
-    shop_schedule.textContent = "出店日 : " + shop_details.month + "月" + shop_details.day + "日";
+    shop_schedule.textContent = "出店日時 : " + shop_details.日時;
     frame.append(shop_schedule);
 
-    const shop_genre = document.createElement("p");
-    shop_genre.className = "NAME_TEXT";
-    shop_genre.textContent = "店舗名 : " + shop_details.shop_name;
-    frame.append(shop_genre);
-
     const shop_name = document.createElement("p");
-    shop_name.className = "TIME_TEXT";
-    shop_name.textContent = "営業時間 : " + shop_details.start_time + "時〜" + shop_details.end_time + "時";
+    shop_name.className = "NAME_TEXT";
+    shop_name.textContent = "店舗名 : " + shop_details.出店者名;
     frame.append(shop_name);
+
+    const shop_genre = document.createElement("p");
+    shop_genre.className = "GENRE_TEXT";
+    shop_genre.textContent = "商品ジャンル : " + shop_details.商品ジャンル;
+    frame.append(shop_genre);
 
     return frame;
 }
