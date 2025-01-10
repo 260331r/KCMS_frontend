@@ -2,7 +2,7 @@
 <html lang="js">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=0.8">
         <link rel="stylesheet" href="user_top.css">
         <link rel="stylesheet" href="calender.css">
     </head>
@@ -20,11 +20,19 @@
                     <option value='./keyword_search.html'>キーワードで検索</option>
                     <option value='./genre_search.html'>ジャンル別に検索</option>
                     <option value='./place_search.html'>地域別に検索</option>
+                    <option value='./calender_search.html'>日付から検索</option>
                 </select>
                 <button id="NEXT_BUTTON" class="COMMON_BUTTON" type="button">次へ</button>
             </form>
         </div>
 
+
+        <div class="COMMON_TEXT USER_TEXT TEXT_UNDERLINE">本日の出店</div>
+        <div>
+            <div class="TODAYS_LIST"></div>
+        </div>
+        
+        <!--
         <div class="COMMON_TEXT USER_TEXT TEXT_UNDERLINE">出店予定</div>
         <p></p>
         <div class="calendar">
@@ -37,9 +45,8 @@
                 <div id="calendar_Days" class="calendar_Days"></div>
             </div>
         </div>
-
+        -->
         <script src="user_top.js"></script>
-        <script src="calender.js"></script>
     </body>
     
 </html>
