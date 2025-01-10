@@ -49,13 +49,14 @@ async function make_container(){
     // 日付をSQLに合わせる
     clear_text();
     const searched_elements = await db_search_elements(today.toISOString().split('T')[0]); 
-
+    // 無い場合は処理終了
     if (!searched_elements || searched_elements.length === 0) {
         return;
     }    
 
     const todayscontainer = document.querySelector('.TODAYS_LIST');
     const owner_list = delete_deplicate(searched_elements);
+
     // 三つまで表示させる
     let range;
     if (3 > owner_list.length) {
@@ -89,7 +90,8 @@ async function make_container(){
         todayscontainer.appendChild(resultcontainer);    
     }
 }
-// ダブりの出店者が出るので,ダブりを排除する関数を作成する
+
+// ダブりの出店者が出るので,ダブりを排除する関数
 function delete_deplicate(searched_list) {
     for (let i = 0; i < searched_list.length; i++) {
         for (let j = i + 1; j < searched_list.length - 1; j++) {
@@ -116,7 +118,7 @@ function create_server_error_text(){
 
     return 0;
 }
-
+// エラー文等リセット
 function clear_text() {
     const text_box = document.getElementById("error");
     text_box.innerHTML = "";
