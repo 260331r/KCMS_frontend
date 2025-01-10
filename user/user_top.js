@@ -1,3 +1,8 @@
+// 初期設定
+document.addEventListener("DOMContentLoaded", () => {
+    make_container();
+});
+// 「次へ」ボタンを押したときの処理
 document.querySelector("#NEXT_BUTTON").addEventListener("click", function() {
     const selectElement = document.getElementById("SEARCH_TYPE_BOX");
     const selectedOption = selectElement.options[selectElement.selectedIndex];
@@ -11,50 +16,87 @@ document.querySelector("#NEXT_BUTTON").addEventListener("click", function() {
     }
 });
 
-const dammydata = [
-    {name: "店舗名", genre: "商品ジャンル", city: "市区町村", address: "住所"},
-    {name: "A", genre: "B", city: "C", address: "D"},
-    {name: "A", genre: "B", city: "C", address: "D"}
-];
+// データベースから今日の日付で出店するキッチンカーを取得する関数を作成する．
+async function db_search_elements(date){
+    const response = await fetch("http://127.0.0.1:8000/api/user/user_search_calender.py/get_list_repository", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "date": {"日時": date}
+        })
+    });
 
-const todayslist = document.querySelector('.TODAYS_LIST');
+    try {
+        const result = await response.json();
+        
+        if (!response.ok || !result || result.length <= 0) {
+            create_not_search_text();
+        }
+        
+        return result;
+    } catch (error) {
+        create_server_error_text();
+    }
 
-dammydata.forEach(store=>{
-    // 各店舗のコンテナを作成する
+    return false;
+}
+
+async function create_kicthen_list() {
+    const date = new Date();
+    const today = format_Date(date, "-");
+    const searched_elements = await db_search_elements(today);
+    return searched_elements;
+}
+
+function make_container(){
     const resultcontainer = document.createElement('div');
-    resultcontainer.className = 'TODAYS_CONTAINER';
+    resultcontainer.className = "TODAYS_CONTAINER"
 
-    // 店舗名書き込み
-    const storeName = document.createElement('p');
-    storeName.className = 'COMMON_TEXT TODAYS_TEXT';
-    // 全部色が#ff7f00だとメリハリがつかない気がする．
-    storeName.style = 'color: black'; 
-    storeName.textContent = store.name;
+    const searched_element = create_kicthen_list();
+    searched_element.forEach(store => {
+        // 店舗名書き込み
+        const storeName = document.createElement('p');
+        storeName.className = 'COMMON_TEXT TODAYS_TEXT';
+        // 全部色が#ff7f00だとメリハリがつかない気がする．
+        storeName.style = 'color: black'; 
+        storeName.textContent = store.出店者名;
+        resultcontainer.append(storeName);
 
-    const storeGenre = document.createElement('p');
-    storeGenre.className = 'COMMON_TEXT TODAYS_TEXT';
-    storeGenre.textContent = store.genre;
+        const storeGenre = document.createElement('p');
+        storeGenre.className = 'COMMON_TEXT TODAYS_TEXT';
+        storeGenre.textContent = "商品ジャンル ： " + store.商品ジャンル;
+        resultcontainer.append(storeGenre);
 
-    const storeCity = document.createElement('p');
-    storeCity.className = 'COMMON_TEXT TODAYS_TEXT';
-    storeCity.textContent = store.city + " " + store.address;
-    
-    /*const storeAddress = document.createElement('p');
-    storeAddress.className = 'COMMON_TEXT TODAYS_TEXT';
-    storeAddress.textContent = store.address;*/
-    /*
-    // 各コンテナのボタン
-    const detailbutton = document.createElement('button');
-    detailbutton.className = 'COMMON_BUTTON COMMON_BUTTON_LARGE';
-    detailbutton.textContent = '詳しくはこちら';
-    */
-    // コンテナに要素追加
-    resultcontainer.appendChild(storeName);
-    resultcontainer.appendChild(storeGenre);
-    resultcontainer.appendChild(storeCity);
-    //resultcontainer.appendChild(storeAddress);
-    //resultcontainer.appendChild(detailbutton);
+        const storeCity = document.createElement('p');
+        storeCity.className = 'COMMON_TEXT TODAYS_TEXT';
+        storeCity.textContent = store.地域 + " " + store.住所;
+        resultcontainer.append(storeCity);
+    });
+}
 
-    // 親要素に追加
-    todayslist.appendChild(resultcontainer);
-});
+// yyyy-mm-dd形式にする関数
+function format_Date(date, sep="") {
+    const yyyy = date.getFullYear();
+    const mm = ('00' + (date.getMonth()+1)).slice(-2);
+    const dd = ('00' + date.getDate()).slice(-2);
+
+    return `${yyyy}${sep}${mm}${sep}${dd}`;
+}
+
+// 検索結果が見つからなかった時のエラー文を表示する関数
+function create_not_search_text(){
+    const text_box = document.getElementById("error");
+    text_box.innerText = "検索結果が見つかりませんでした";
+
+    return 0;
+}
+
+// データベースとの通信でエラーが起こった場合のエラー文を表示する関数
+function create_server_error_text(){
+    const text_box = document.getElementById("error");
+    text_box.innerText = "サーバーエラーが起こりました";
+
+    return 0;
+}
