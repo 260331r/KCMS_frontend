@@ -17,7 +17,7 @@ document.querySelector("#NEXT_BUTTON").addEventListener("click", function() {
     }
 });
 
-// データベースから今日の日付で出店するキッチンカーを取得する関数を作成する．
+// データベースから今日の日付で出店するキッチンカーを取得する関数
 async function db_search_elements(date){
     const response = await fetch("http://127.0.0.1:8000/api/user/user_search_calendar/", {
         method: "POST",
@@ -44,46 +44,61 @@ async function db_search_elements(date){
     return false;
 }
 
-async function create_kicthen_list() {
-    const date = new Date();
-    const today = date.toISOString();
-    const searched_elements = await db_search_elements(today);
-    return searched_elements;
-}
-
 async function make_container(){
-    let count = 0;
-    const resultcontainer = document.createElement('div');
-    resultcontainer.className = "TODAYS_CONTAINER"
+    const today = new Date();
+    // 日付をSQLに合わせる
+    clear_text();
+    const searched_elements = await db_search_elements(today.toISOString().split('T')[0]); 
 
-    const searched_elements = await create_kicthen_list();
     if (!searched_elements || searched_elements.length === 0) {
         return;
+    }    
+
+    const todayscontainer = document.querySelector('.TODAYS_LIST');
+    const owner_list = delete_deplicate(searched_elements);
+    // 三つまで表示させる
+    let range;
+    if (3 > owner_list.length) {
+        range = owner_list.length;
+    } else {
+        range = 3;
     }
-    searched_elements.forEach(store => {
+
+    for (let i = 0; i < range; i++) {
+        const resultcontainer = document.createElement('div');
+        resultcontainer.className = "TODAYS_CONTAINER";
         // 店舗名書き込み
         const storeName = document.createElement('p');
-        storeName.className = 'COMMON_TEXT TODAYS_TEXT';
+        storeName.className = 'COMMON_TEXT NAME_TEXT';
         // 全部色が#ff7f00だとメリハリがつかない気がする．
         storeName.style = 'color: black'; 
-        storeName.textContent = store.出店者名;
-        resultcontainer.append(storeName);
-
+        storeName.textContent = "店舗名 : " + owner_list[i].出店者名;
+        resultcontainer.appendChild(storeName);
+        // 商品ジャンル
         const storeGenre = document.createElement('p');
-        storeGenre.className = 'COMMON_TEXT TODAYS_TEXT';
-        storeGenre.textContent = "商品ジャンル ： " + store.商品ジャンル;
-        resultcontainer.append(storeGenre);
-
+        storeGenre.className = 'COMMON_TEXT GENRE_TEXT';
+        storeGenre.textContent = "商品ジャンル ： " + owner_list[i].商品ジャンル;
+        resultcontainer.appendChild(storeGenre);
+        // 場所
         const storeCity = document.createElement('p');
-        storeCity.className = 'COMMON_TEXT TODAYS_TEXT';
-        storeCity.textContent = store.地域 + " " + store.住所;
-        resultcontainer.append(storeCity);
+        storeCity.className = 'COMMON_TEXT ADDRESS_TEXT';
+        storeCity.textContent = "場所 : " + owner_list[i].住所;
+        storeCity.style = 'color: black';
+        resultcontainer.appendChild(storeCity);
 
-        count += 1;
-        if (count > 3) {
-            return 0;
+        todayscontainer.appendChild(resultcontainer);    
+    }
+}
+// ダブりの出店者が出るので,ダブりを排除する関数を作成する
+function delete_deplicate(searched_list) {
+    for (let i = 0; i < searched_list.length; i++) {
+        for (let j = i + 1; j < searched_list.length - 1; j++) {
+            if (searched_list[i].出店者名 === searched_list[j].出店者名) {
+                searched_list.splice(j, 1);
+            }
         }
-    });
+    }
+    return searched_list;
 }
 
 // 検索結果が見つからなかった時のエラー文を表示する関数
@@ -98,6 +113,13 @@ function create_not_search_text(){
 function create_server_error_text(){
     const text_box = document.getElementById("error");
     text_box.innerText = "サーバーエラーが起こりました";
+
+    return 0;
+}
+
+function clear_text() {
+    const text_box = document.getElementById("error");
+    text_box.innerHTML = "";
 
     return 0;
 }
