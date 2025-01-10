@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アカウント情報検索結果画面</title>
+    <style>
+        /* 背景全体*/
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFFDD0; /* 背景色 */
+        }
+
+        /* ヘッダー部分 */
+        header {
+            background-color: #FF7F00; /* 文字色を利用した背景色 */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.5em;
+        }
+
+        /* コンテナ全体 */
+        .container {
+            padding: 20px;
+        }
+
+        /* アカウント情報 */
+        .account-info {
+            border: 2px solid #FF7F00; /* 文字色を利用した縁の色 */
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* アカウント名 */
+        .account-info h3 {
+            margin: 0 0 10px 0;
+            color: #FF7F00; /* 文字色 */
+        }
+
+        /* アカウント情報のテキスト */
+        .account-info p {
+            margin: 5px 0;
+        }
+
+        /* 削除ボタン */
+        .delete-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto 0 auto;
+            text-align: center;
+            padding: 10px;
+            background-color: #FFFFFF; /* ボタン背景色 */
+            color: #FF7F00; /* ボタン文字色 */
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid #FF7F00; /* ボタン縁の色 */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 削除ボタン押下時 */
+        .delete-button:hover {
+            background-color: #FF7F00; /* ホバー時の背景色 */
+            color: white; /* 押下時の文字色 */
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        アカウント情報検索結果画面
+    </header>
+
+    <!-- メインコンテンツ -->
+    <div class="container">
+        <!-- アカウント情報表示エリア -->
+        <div class="account-info">
+            <h3>アカウント名: サンプルユーザー</h3>
+            <p>メールアドレス: sample@example.com</p>
+            <p>登録日: 2023-01-01</p>
+        </div>
+
+        <!-- 削除ボタン -->
+        <button class="delete-button" id="deleteButton" type="button">削除</button>
+    </div>
+
+    <!-- JavaScriptファイルの読み込み -->
+    <script src="account_view.js"></script>
+</body>
+</html>
