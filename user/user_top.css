@@ -3,7 +3,8 @@
 */
 body{
     height: 100vh;
-    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
     text-align: center;
     background-color: #FFFDD0;
 }
@@ -90,4 +91,30 @@ select{
     box-shadow: 0 5px 0 0 #c86a0c;
     background-color: #ff7f00;
     color: #fff;
+}
+
+.COMMON_BUTTON_LARGE{
+    width: 100px;
+    height: 50px;
+    font-size: 0.7em;
+}
+
+.TODAYS_LIST{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TODAYS_TEXT{
+    margin: 5px;
+}
+
+.TODAYS_CONTAINER{
+    background-color: #fff;
+    border: solid 2px #FF7F00;
+    width: 30%;
+    height: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin: 1%;
 }
