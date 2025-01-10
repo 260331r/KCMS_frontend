@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     make_container();
 });
+
 // 「次へ」ボタンを押したときの処理
 document.querySelector("#NEXT_BUTTON").addEventListener("click", function() {
     const selectElement = document.getElementById("SEARCH_TYPE_BOX");
@@ -18,13 +19,13 @@ document.querySelector("#NEXT_BUTTON").addEventListener("click", function() {
 
 // データベースから今日の日付で出店するキッチンカーを取得する関数を作成する．
 async function db_search_elements(date){
-    const response = await fetch("http://127.0.0.1:8000/api/user/user_search_calender.py/get_list_repository", {
+    const response = await fetch("http://127.0.0.1:8000/api/user/user_search_calendar/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "date": {"日時": date}
+            "datetime": date
         })
     });
 
@@ -34,7 +35,7 @@ async function db_search_elements(date){
         if (!response.ok || !result || result.length <= 0) {
             create_not_search_text();
         }
-        
+
         return result;
     } catch (error) {
         create_server_error_text();
@@ -45,17 +46,21 @@ async function db_search_elements(date){
 
 async function create_kicthen_list() {
     const date = new Date();
-    const today = format_Date(date, "-");
+    const today = date.toISOString();
     const searched_elements = await db_search_elements(today);
     return searched_elements;
 }
 
-function make_container(){
+async function make_container(){
+    let count = 0;
     const resultcontainer = document.createElement('div');
     resultcontainer.className = "TODAYS_CONTAINER"
 
-    const searched_element = create_kicthen_list();
-    searched_element.forEach(store => {
+    const searched_elements = await create_kicthen_list();
+    if (!searched_elements || searched_elements.length === 0) {
+        return;
+    }
+    searched_elements.forEach(store => {
         // 店舗名書き込み
         const storeName = document.createElement('p');
         storeName.className = 'COMMON_TEXT TODAYS_TEXT';
@@ -73,22 +78,18 @@ function make_container(){
         storeCity.className = 'COMMON_TEXT TODAYS_TEXT';
         storeCity.textContent = store.地域 + " " + store.住所;
         resultcontainer.append(storeCity);
+
+        count += 1;
+        if (count > 3) {
+            return 0;
+        }
     });
-}
-
-// yyyy-mm-dd形式にする関数
-function format_Date(date, sep="") {
-    const yyyy = date.getFullYear();
-    const mm = ('00' + (date.getMonth()+1)).slice(-2);
-    const dd = ('00' + date.getDate()).slice(-2);
-
-    return `${yyyy}${sep}${mm}${sep}${dd}`;
 }
 
 // 検索結果が見つからなかった時のエラー文を表示する関数
 function create_not_search_text(){
     const text_box = document.getElementById("error");
-    text_box.innerText = "検索結果が見つかりませんでした";
+    text_box.innerText = "本日の出店予定はありません";
 
     return 0;
 }
