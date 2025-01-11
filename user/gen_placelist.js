@@ -12,12 +12,50 @@ for (let i = 0; i < place.length; i++) {
 const sec = document.querySelector('select');
 sec.innerHTML = placelistHtml;
 
-let txt;
+let selectplace;
+selectplace = sec.options[sec.value].textContent;
 sec.addEventListener(`change`, function() {
-    txt = this.options[sec.value].textContent;
-})
+    selectplace = this.options[sec.value].textContent;
+});
 
-const button = document.getElementById('placenext');
-button.onclick= function() {
-    window.location.href=`./search_result.html?param=${txt}`;
+const button = document.getElementById('PLACE_NEXT_BUTTON');
+button.onclick= async function() {
+    const searched_elements = await db_search_elements(selectplace);
+    // 別ページへオブジェクトを渡すための処理
+    const encodedObject = encodeURIComponent(JSON.stringify(searched_elements));
+    window.location.href = `./place_search_result.html?param=${encodedObject}`;
 };
+
+// データベースから地域を元に場所提供者のリストを取得する関数
+async function db_search_elements(place){
+    const response = await fetch("http://127.0.0.1:8000/api/user/user_search_area/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "area": {"地域" : place}
+        })
+    });
+
+    try {
+        const result = await response.json();
+        
+        if (!response.ok || !result || result.length <= 0) {
+            create_not_search_text();
+        }
+
+        return result;
+    } catch (error) {
+        create_server_error_text();
+    }
+    return false;
+}
+
+function create_not_search_text() {
+    console.log('何もありませんでした．');
+}
+
+function create_server_error_text() {
+    console.log('サーバーエラーです．')
+}
