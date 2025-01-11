@@ -1,39 +1,50 @@
-const storedata = [
-    {name: "ダミー店舗名１", date: "XXXX/XX/XX XX:XX~"},
-    {name: "ダミー店舗名２", date: "XXXX/XX/XX XX:XX~"},
-    {name: "ダミー店舗名３", date: "XXXX/XX/XX XX:XX~"},
-    {name: "ダミー店舗名４", date: "XXXX/XX/XX XX:XX~"}
-]; 
+document.addEventListener("DOMContentLoaded", () => {
+    fetch_before();
+})
 
-const resultlist = document.querySelector('.RESULT_LIST');
+function fetch_before() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const encodedData = urlParams.get('param');
+    console.log(encodedData);
+    if (encodedData) {
+        const searched_elements = JSON.parse(decodeURIComponent(encodedData));
+        console.log(searched_elements);
+        view_result(searched_elements);
+    }
+}
 
-storedata.forEach(store => {
-    // 各店舗のコンテナを作成する
-    const resultcontainer = document.createElement('div');
-    resultcontainer.className = 'RESULT_CONTAINER';
+// 検索結果を表示させる．
+function view_result(searched_elements) {
+    const resultlist = document.querySelector('.RESULT_LIST');
+    for (let i = 0; i < searched_elements.length; i++) {
+        const resultcontainer = document.createElement('div');
+        resultcontainer.className = 'RESULT_CONTAINER';
 
-    // 店舗名書き込み
-    const storeName = document.createElement('p');
-    storeName.className = 'COMMON_TEXT';
-    // 全部色が#ff7f00だとメリハリがつかない気がする．
-    storeName.style = 'color: black'; 
-    storeName.textContent = store.name;
+        const storeName = document.createElement('p');
+        storeName.className = 'COMMON_TEXT STORE_NAME_TEXT';
+        console.log(searched_elements[i].出店者名);
+        storeName.textContent = searched_elements[i].出店者名;
+        resultcontainer.appendChild(storeName);
 
-    // 日付，時間書き込み
-    const dateandtime = document.createElement('p');
-    dateandtime.className = 'COMMON_TEXT DATE_TEXT';
-    dateandtime.textContent = '日付： ' + store.date
+        const genre = document.createElement('p');
+        genre.className = 'COMMON_TEXT GENRE_TEXT';
+        genre.style = 'color: black';
+        genre.textContent = "商品ジャンル: " + searched_elements[i].商品ジャンル;
+        resultcontainer.appendChild(genre);
 
-    // 各コンテナのボタン
-    const detailbutton = document.createElement('button');
-    detailbutton.className = 'COMMON_BUTTON COMMON_BUTTON_LARGE';
-    detailbutton.textContent = '詳しくはこちら';
+        const placeName = document.createElement('p');
+        placeName.className = "COMMON_TEXT PLACE_NAME_TEXT";
+        placeName.style = 'color: black';
+        placeName.textContent = "開催場所: " + searched_elements[i].場所名;
+        resultcontainer.appendChild(placeName);
 
-    // コンテナに要素追加
-    resultcontainer.appendChild(storeName);
-    resultcontainer.appendChild(dateandtime);
-    resultcontainer.appendChild(detailbutton);
 
-    // 親要素に追加
-    resultlist.appendChild(resultcontainer);
-});
+        const address = document.createElement('p');
+        address.textContent = "住所: " + searched_elements[i].住所
+        address.style = 'color: black';
+        resultcontainer.appendChild(address);
+
+
+        resultlist.appendChild(resultcontainer);
+    }
+}

@@ -136,3 +136,19 @@ select{
     font-size: 20px;
     color: #000;
 }
+
+.STORE_NAME_TEXT{
+    font-size: 30px;
+}
+
+.PLACE_NAME_TEXT{
+    font-size: 25px;
+}
+
+.ADDRESS_TEXT{
+    font-size: 20px;
+}
+
+.GENRE_TEXT{
+    font-size: 15px;
+}
