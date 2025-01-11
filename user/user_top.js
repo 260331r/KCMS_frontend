@@ -47,12 +47,13 @@ async function db_search_elements(date){
 async function make_container(){
     const today = new Date();
     // 日付をSQLに合わせる
-    clear_text();
     const searched_elements = await db_search_elements(today.toISOString().split('T')[0]); 
     // 無い場合は処理終了
     if (!searched_elements || searched_elements.length === 0) {
         return;
     }    
+
+    clear_text();
 
     const todayscontainer = document.querySelector('.TODAYS_LIST');
     const owner_list = delete_deplicate(searched_elements);
@@ -80,10 +81,17 @@ async function make_container(){
         storeGenre.className = 'COMMON_TEXT GENRE_TEXT';
         storeGenre.textContent = "商品ジャンル ： " + owner_list[i].商品ジャンル;
         resultcontainer.appendChild(storeGenre);
-        // 場所
+
+        // 開催場所
+        const storePlace = document.createElement('p');
+        storePlace.className = 'COMMON_TEXT ADDRESS_TEXT';
+        storePlace.textContent = "開催場所 : " + owner_list[i].場所名;
+        storePlace.style = 'color: black';
+        resultcontainer.appendChild(storePlace);
+        // 住所
         const storeCity = document.createElement('p');
         storeCity.className = 'COMMON_TEXT ADDRESS_TEXT';
-        storeCity.textContent = "場所 : " + owner_list[i].住所;
+        storeCity.textContent = "住所 : " + owner_list[i].住所;
         storeCity.style = 'color: black';
         resultcontainer.appendChild(storeCity);
 
@@ -92,12 +100,19 @@ async function make_container(){
 }
 
 // ダブりの出店者が出るので,ダブりを排除する関数
+// 時間も考慮するべき？
 function delete_deplicate(searched_list) {
     for (let i = 0; i < searched_list.length; i++) {
+        let samecount = 0;
         for (let j = i + 1; j < searched_list.length - 1; j++) {
             if (searched_list[i].出店者名 === searched_list[j].出店者名) {
                 searched_list.splice(j, 1);
+                samecount++;
             }
+        }
+        // マッチングが決定していないものは省く
+        if (samecount === 0) {
+            searched_list.splice(i, 1);
         }
     }
     return searched_list;

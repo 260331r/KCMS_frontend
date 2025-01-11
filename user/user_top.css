@@ -107,14 +107,28 @@ select{
 
 .TODAYS_TEXT{
     margin: 5px;
+    font-size: 20px;
 }
 
 .TODAYS_CONTAINER{
     background-color: #fff;
-    border: solid 2px #FF7F00;
-    width: 30%;
+    border: solid 5px #FF7F00;
+    width: 33%;
     height: 300px;
     margin-top: 50px;
     margin-bottom: 50px;
     margin: 1%;
+}
+
+.NAME_TEXT{
+    font-size: 30px;
+    color: #FF7F00;
+}
+
+.GENRE_TEXT{
+    font-size: 22px
+}
+
+.ADDRESS_TEXT{
+    font-size: 20px;
 }
