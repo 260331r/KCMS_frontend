@@ -20,6 +20,8 @@ async function init_create_schedule_list() {
         console.error("スケジュールの取得に失敗しました:", error);
         create_error_text(document.getElementById("list")); // エラー時もエラーメッセージを表示
     }
+
+    return false;
 }
 
 // サーバーからスケジュールを取得する関数
@@ -34,12 +36,19 @@ async function fetch_schedule_from_server(user_id) {
         })
     });
 
-    if (!response.ok) {
-        throw new Error("サーバーエラー: スケジュール取得に失敗しました");
+    try {
+        const result = await response.json();
+
+        if (!response.ok || !result || result.length <= 0) {
+            create_not_search_text();
+        }
+
+        return result;
+    } catch (error) {
+        create_error_text();
     }
 
-    const data = await response.json();
-    return data || []; // データが空の場合は空配列を返す
+    return data;
 }
 
 // リストの枠を量産する関数
