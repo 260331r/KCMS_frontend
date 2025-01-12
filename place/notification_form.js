@@ -37,7 +37,7 @@ function make_frame(request_details){
     // 出店希望日時
     const place_schedule = document.createElement("p");
     place_schedule.className = "SCHEDULE_TEXT";
-    place_schedule.textContent = "出店希望日時 : " + formatDate(request_details.日時);
+    place_schedule.textContent = "出店希望日時 : " + format_date(request_details.日時);
     frame.append(place_schedule);
 
     // 出店者名
@@ -56,7 +56,7 @@ function make_frame(request_details){
 }
 
 // 日付のフォーマット
-function formatDate(dateString) {
+function format_date(dateString) {
     const date = new Date(dateString);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');

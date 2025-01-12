@@ -22,7 +22,14 @@ body{
     width: 800px;
 }
 
-.TITLE_TEXT::before,
+.TITLE_TEXT::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px dashed #FF7F00;
+}
+
 .TITLE_TEXT::after{
     content: '';
     position: absolute;
