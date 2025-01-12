@@ -18,8 +18,7 @@ function give_function_regist_button(){
 
 // 入力情報をチェックする関数
 function check_info(){
-    const date = document.getElementById("date");
-    
+    const date = document.getElementById("date").value;
 }
 
 // データベースに情報を登録する関数
