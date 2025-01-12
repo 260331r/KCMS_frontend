@@ -59,7 +59,7 @@ function make_frame(shop_details) {
 
     const shop_schedule = document.createElement("p");
     shop_schedule.className = "SCHEDULE_TEXT";
-    shop_schedule.textContent = "出店日時 : " + shop_details.日時;
+    shop_schedule.textContent = "出店日時 : " + shop_details.日時 - "TO";
     frame.append(shop_schedule);
 
     const shop_name = document.createElement("p");
