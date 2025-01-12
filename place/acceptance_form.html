@@ -9,11 +9,20 @@
     <body>
         <span class="COMMON_TEXT TITLE_TEXT">出店依頼を受諾しますか？</span>
 
-        <div class="KC_NAME">店名</div>
-        <div class="KC_GENRE">商品ジャンル</div>
-        <div class="KC_MENU">メニュー＜おにぎり、やきそば＞ </div>
-        <div class="KC_PHOTO">写真 </div>
-        <div id="list" class="LIST_CONTAINER">出店予定 </div>
+        <!-- 店舗情報 -->
+        <div class="KC_NAME" id="store_name">店名</div>
+        <div class="KC_GENRE" id="store_genre">商品ジャンル</div>
+        <div class="KC_MENU" id="store_menu">メニュー </div>
+        <div class="KC_PHOTO">
+            <img id="store_photo" src="" alt="店舗の写真" style="width: 100%; height: auto;">
+        </div>
+
+        <!-- 出店予定リスト -->
+        <div id="list" class="LIST_CONTAINER">出店予定</div>
+
+        <!-- エラーメッセージを表示するエリア -->
+        <div id="error" class="COMMON_TEXT"></div>  <!-- エラーメッセージをここに表示 -->
+
         <div class="BUTTON_CONTAINER">
             <button class="yes-button">依頼をうける</button>
             <button class="no-button">依頼を断る</button>
