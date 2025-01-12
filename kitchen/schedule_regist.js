@@ -16,9 +16,20 @@ function give_function_regist_button(){
     });
 }
 
+
 // 入力情報をチェックする関数
 function check_info(){
+
     const date = document.getElementById("date").value;
+    //const email = document.getElementById("email").value;
+    const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if(date.length <= 0){
+        text_box.innerText = "日時は記入必須です";
+        return false;
+    }
+
+    
+    return true;
 }
 
 // データベースに情報を登録する関数
@@ -49,6 +60,8 @@ async function db_regist_info(){
 
     return false;
 }
+
+
 
 // 正しい入力がされていなかったときのエラー文を表示する関数
 function create_can_not_regist_text(){
