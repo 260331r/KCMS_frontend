@@ -1,4 +1,5 @@
 body{
+    font-family: "Hachi Maru Pop", cursive;
     height: 100vh;
     margin: 0;
     text-align: center;
@@ -8,7 +9,7 @@ body{
 .COMMON_TEXT{
     font-size: 30px;
     color: #FF7F00;
-    font-family: "ヒラギノ丸ゴ ProN";
+    font-family: "Hachi Maru Pop", cursive;
 }
 
 /* ページタイトル */
