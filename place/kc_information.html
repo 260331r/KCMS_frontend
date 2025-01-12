@@ -1,25 +1,26 @@
 <!--出店者詳細画面--> 
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="kc_information.css">
-    <script src="kc_information.js" defer></script>
-    <title>キッチンカー詳細情報</title>
-</head>
-<body>
-    <span class="COMMON_TEXT TITLE_TEXT">キッチンカー詳細情報</span>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="kc_information.css">
+        <script src="kc_information.js" defer></script>
+        <title>キッチンカー詳細情報</title>
+    </head>
+    <body>
+        <span class="COMMON_TEXT TITLE_TEXT">キッチンカー詳細情報</span>
 
-    <!-- 店舗情報 -->
-    <div class="KC_NAME">店名: <span id="store_name">Loading...</span></div>
-    <div class="KC_GENRE">商品ジャンル: <span id="store_genre">Loading...</span></div>
-    <div class="KC_MENU">メニュー: <span id="store_menu">Loading...</span></div>
-    <div class="KC_PHOTO">
-        <img id="store_photo" src="" alt="写真" width="300" height="200">
-    </div>
+        <!-- 店舗情報 -->
+        <div class="KC_NAME">店名: <span id="store_name">Loading...</span></div>
+        <div class="KC_GENRE">商品ジャンル: <span id="store_genre">Loading...</span></div>
+        <div class="KC_MENU">メニュー: <span id="store_menu">Loading...</span></div>
+        <div class="KC_PHOTO">
+            <img id="store_photo" src="" alt="写真" width="300" height="200">
+        </div>
 
-    <!-- 出店予定リスト -->
-    <div id="list" class="LIST_CONTAINER">出店予定</div>
+        <!-- 出店予定リスト -->
+        <div id="list" class="LIST_CONTAINER">出店予定</div>
 
-    <div id="error" class="COMMON_TEXT"></div> <!-- エラー表示 -->
-</body>
+        <div id="error" class="COMMON_TEXT"></div> <!-- エラー表示 -->
+    </body>
 </html>
