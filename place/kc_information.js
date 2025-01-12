@@ -18,7 +18,7 @@ async function init_create_schedule_list() {
     if (all_elements.length > 0) {
         create_schedule_frame_list(all_elements, list);  // 出店予定があればリストを作成
     } else {
-        create_error_text(list);  // 出店予定がなければエラーメッセージを表示
+        create_error_text();  // 出店予定がなければエラーメッセージを表示
     }
 }
 
@@ -72,10 +72,12 @@ async function db_all_elements(user_id) {
         }
 
         // 出店者情報を表示
-        document.getElementById("store_name").textContent = result[0].出店者名 || "未定";
-        document.getElementById("store_genre").textContent = result[0].商品ジャンル || "未定";
-        document.getElementById("store_menu").textContent = result[0].メニュー || "未定";  // メニューの表示
-        document.getElementById("store_photo").src = result[0].写真 || "default.jpg";  // 写真の表示
+        if (result[0]) {
+            document.getElementById("store_name").textContent = result[0].出店者名 || "未定";
+            document.getElementById("store_genre").textContent = result[0].商品ジャンル || "未定";
+            document.getElementById("store_menu").textContent = result[0].メニュー || "未定";  // メニューの表示
+            document.getElementById("store_photo").src = result[0].写真 || "default.jpg";  // 写真の表示
+        }
 
         return result; // 出店予定情報を返す
     } catch (error) {
@@ -85,7 +87,8 @@ async function db_all_elements(user_id) {
 }
 
 // 出店予定がない場合にエラーメッセージを表示する関数
-function create_error_text(error_text_box) {
+function create_error_text() {
+    const error_text_box = document.getElementById("error");
     error_text_box.textContent = "出店予定がありません"; // 出店予定がない場合のメッセージ
 }
 
