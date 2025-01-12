@@ -3,6 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="acceptance_form.css">
         <script src="acceptance_form.js"></script>
     </head>
@@ -10,10 +11,18 @@
         <span class="COMMON_TEXT TITLE_TEXT">出店依頼を受諾しますか？</span>
 
         <!--ここに場所提供者詳細画面を貼る-->
+        <div class="COMMON_TEXT PLACE_NAME">店名 : </div>
+        <div class="COMMON_TEXT PLACE_ADDRESS">住所 : </div>
+        <div id="list" class="COMMON_TEXT LIST_CONTAINER">出店予定店舗</div>
 
+        <!--ボタン設置-->
         <div class="BUTTON_CONTAINER">
-            <button class="yes-button">依頼をうける</button>
-            <button class="no-button">依頼を断る</button>
+            <a href="confirmation_request.html">
+                <button>依頼をうける</button>
+            </a>
+            <a href="notification_form.html">
+                <button>依頼を断る</button>
+            </a>
         </div>
         <span id="error"></span>
     </body>
