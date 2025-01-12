@@ -22,7 +22,7 @@ function check_info(){
 
     const date = document.getElementById("date").value;
     //const email = document.getElementById("email").value;
-    const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //const email_pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(date.length <= 0){
         text_box.innerText = "日時は記入必須です";
         return false;
