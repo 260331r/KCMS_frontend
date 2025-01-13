@@ -1,0 +1,25 @@
+body{
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+.common_text{
+    font-size: 40px;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+
+
+
+.common_button{
+    border-radius:8px;
+    border-color: #FF7F00;
+    font-size:40px;
+    margin-top: 30px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #FF7F00;
+}
