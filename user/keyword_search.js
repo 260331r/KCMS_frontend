@@ -1,13 +1,12 @@
-// 今は空
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('.COMMON_BUTTON').addEventListener('click', async function() {
-        const keyword = document.getElementById('INPUT_KEYWORD').value;
+        const keyword = document.getElementById('input_keyword').value;
         if (keyword) {
             const searched_elements = await db_search_elements(keyword);
             console.log(searched_elements);
             // 別ページへオブジェクトを渡すための処理
-            const encodedObject = encodeURIComponent(JSON.stringify(searched_elements));
-            window.location.href = `./keyword_search_result.html?param=${encodedObject}`;
+            const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
+            window.location.href = `./keyword_search_result.html?param=${encoded_object}`;
         } else {
             return;
         }
@@ -42,8 +41,10 @@ async function db_search_elements(keyword){
 
 function create_not_search_text() {
     console.log('何もありませんでした．');
+    return 0;
 }
 
 function create_server_error_text() {
-    console.log('サーバーエラーです．')
+    console.log('サーバーエラーです．');
+    return 0;
 }
