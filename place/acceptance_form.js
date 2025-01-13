@@ -55,37 +55,38 @@ function make_frame(shop_details) {
     return frame;
 }
 
-// アカウントIDからキッチンカー情報を取得する関数
-async function db_all_elements(store_id) {
-    const response = await fetch("http://127.0.0.1:8000/api/locate/get_store_infor/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
+// ダミーデータを返す関数
+async function db_all_elements(user_id) {
+    const dummy_data = [
+        {
+            出店者名: "キッチンカーA",
+            商品ジャンル: "タコス",
+            メニュー: "タコス、ブリトー",
+            写真: "https://via.placeholder.com/300",
+            日時: "2025-02-15T10:00:00",
+            営業時間: "10:00 - 18:00"
         },
-        body: JSON.stringify({
-            "store_id": { "ユーザID": store_id }
-        })
-    });
-
-    try {
-        const result = await response.json();
-        if (!response.ok || !result || result.length <= 0) {
-            return []; // マッチング依頼がない場合は空配列を返す
+        {
+            出店者名: "キッチンカーB",
+            商品ジャンル: "弁当",
+            メニュー: "のり弁、おにぎり",
+            写真: "https://via.placeholder.com/300",
+            日時: "2025-02-20T10:00:00",
+            営業時間: "11:00 - 14:00"
         }
+    ];
 
-        // 出店者情報を表示
-        if (result[0]) {
-            document.getElementById("store_name").textContent = result[0].出店者名 || "未定";
-            document.getElementById("store_genre").textContent = result[0].商品ジャンル || "未定";
-            document.getElementById("store_menu").textContent = result[0].メニュー || "未定";  // メニューの表示
-            document.getElementById("store_photo").src = result[0].写真 || "default.jpg";  // 写真の表示
-        }
-
-        return result; // 出店予定情報を返す
-    } catch (error) {
-        create_server_error_text();
-        return []; // エラー発生時は空配列を返す
+    // 出店者情報をページに表示
+    if (dummy_data.length > 0) {
+        const store = dummy_data[0];
+        document.getElementById("store_name").textContent = store.出店者名 || "未定";
+        document.getElementById("store_genre").textContent = store.商品ジャンル || "未定";
+        document.getElementById("store_menu").textContent = store.メニュー || "未定";
+        document.getElementById("store_photo").src = store.写真 || "default.jpg";  // 写真がなければデフォルト画像
     }
+
+    // ダミーデータを返す
+    return dummy_data;
 }
 
 // 出店予定がない場合にエラーメッセージを表示する関数
