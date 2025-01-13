@@ -1,5 +1,5 @@
-/*ページ全体の設定 */
-body{
+/* ページ全体の設定 */
+body {
     height: 100vh;
     margin: 0;
     text-align: center;
@@ -7,14 +7,14 @@ body{
 }
 
 /* ほとんどの文字の共通設定 */
-.COMMON_TEXT{
+.COMMON_TEXT {
     font-size: 40px;
     color: #FF7F00;
     font-family: "ヒラギノ丸ゴ ProN";
 }
 
 /* ページのタイトルの設定 */
-.TITLE_TEXT{
+.TITLE_TEXT {
     font-size: 50px;
     margin-top: 50px;
     position: relative;
@@ -22,7 +22,7 @@ body{
     width: 800px;
 }
 
-.TITLE_TEXT::before{
+.TITLE_TEXT::before {
     content: '';
     position: absolute;
     left: 0;
@@ -30,7 +30,7 @@ body{
     border-top: 3px dashed #FF7F00;
 }
 
-.TITLE_TEXT::after{
+.TITLE_TEXT::after {
     content: '';
     position: absolute;
     left: 0;
@@ -38,32 +38,34 @@ body{
     border-top: 3px dashed #FF7F00;
 }
 
-.TITLE_TEXT::before{
-    top:-5px;
+.TITLE_TEXT::before {
+    top: -5px;
 }
 
-.TITLE_TEXT::after{
+.TITLE_TEXT::after {
     bottom: -5px;
 }
 
-/* 出店者名*/
+/* 出店者名 (店名) */
 .KC_NAME {
-    padding: 10px;
+    padding: 20px;
     color: rgb(0, 0, 0);
     text-align: center;
+    font-size: 30px; /* 文字サイズを追加 */
 }
 
 /* 商品ジャンル */
 .KC_GENRE {
-    padding: 5px;
+    padding: 10px;
     color: rgb(89, 27, 27);
     text-align: center;
+    font-size: 25px; /* 文字サイズを追加 */
 }
 
 /* メニュー紹介文 */
 .KC_MENU {
-    display: flex;               
-    justify-content: center;   /* 横方向に中央揃え */
+    display: flex;
+    justify-content: center; /* 横方向に中央揃え */
     padding-top: 10px;
     gap: 10px;
     margin: 0 auto;
@@ -73,12 +75,13 @@ body{
     text-align: center;
     border: 5px solid #FF7F00;
     margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
+    font-size: 20px; /* 文字サイズを追加 */
 }
 
 /* 写真 */
 .KC_PHOTO {
-    display: flex;               
-    justify-content: center;   /* 横方向に中央揃え */
+    display: flex;
+    justify-content: center; /* 横方向に中央揃え */
     padding-top: 0px;
     gap: 10px;
     margin: 0 auto;
@@ -92,11 +95,9 @@ body{
 
 /* 出店スケジュール */
 /* 出店依頼リストの配置設定 */
-.LIST_CONTAINER{
+.LIST_CONTAINER {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    /*display: flex;                  /* 横並びのフレックスボックスを使用 */
-    /*justify-content: center;*/ 
     padding-top: 50px;
     gap: 10px;
     margin: 0 auto;
@@ -104,30 +105,30 @@ body{
 }
 
 /* 出店予定リストの要素の設定 */
-.FRAME_DESIGN{
+.FRAME_DESIGN {
     width: 500px;
     height: 150px;
     background-color: #FFFFFF;
     text-align: center;
     border: 5px solid #FF7F00;
-    /*margin-bottom: 5px;*/
 }
 
 /* 要素内のスケジュール情報の設定 */
-.SCHEDULE_TEXT{
+.SCHEDULE_TEXT {
     font-size: 20px;
     position: relative;
     top: -10px;
 }
+
 /* 営業時間情報の設定 */
-.TIME_TEXT{
+.TIME_TEXT {
     font-size: 20px;
     position: relative;
     top: -30px;
 }
 
 /* 出店場所情報の設定 */
-.PLACE_TEXT{
+.PLACE_TEXT {
     font-size: 30px;
     color: #FF7F00;
     position: relative;
