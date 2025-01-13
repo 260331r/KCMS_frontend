@@ -3,74 +3,77 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function fetch_before() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const encodedData = urlParams.get('param');
-    console.log(encodedData);
-    if (encodedData) {
+    const url_params = new URLSearchParams(window.location.search);
+    const encoded_data = url_params.get('param');
+    console.log(encoded_data);
+    if (encoded_data) {
         try{
-            const searched_elements = JSON.parse(decodeURIComponent(encodedData));
+            const searched_elements = JSON.parse(decodeURIComponent(encoded_data));
             console.log(searched_elements);
             store_view_result(searched_elements);
             place_view_result(searched_elements);
         } catch (error) {
             console.error('データ解析中にエラーが発生しました');
-        }
-        
+            return false;
+        }   
     }
+    return 0;
 }
 
 function store_view_result(searched_elements) {
-    const resultlist = document.querySelector('#STORE_VIEW');
+    const result_list = document.querySelector('#store_view');
     let count = 0;
     for (let i = 0; i < searched_elements.length; i++) {
         if (searched_elements[i].出店者名 == null) continue;
-        const resultcontainer = document.createElement('div');
-        resultcontainer.className = 'RESULT_CONTAINER';
+        const result_container = document.createElement('div');
+        result_container.className = 'RESULT_CONTAINER';
 
-        const storeName = document.createElement('p');
-        storeName.className = 'COMMON_TEXT STORE_NAME_TEXT';
+        const store_name = document.createElement('p');
+        store_name.className = 'COMMON_TEXT STORE_NAME_TEXT';
         console.log(searched_elements[i].出店者名);
-        storeName.textContent = searched_elements[i].出店者名;
-        resultcontainer.appendChild(storeName);
+        store_name.textContent = searched_elements[i].出店者名;
+        result_container.appendChild(storeName);
 
-        const detailButton = document.createElement('button');
-        detailButton.className = 'COMMON_BUTTON COMMON_BUTTON_LARGE';
-        detailButton.textContent = "詳しくはこちら";
-        detailButton.addEventListener('click', function() {
+        const detail_button = document.createElement('button');
+        detail_button.className = 'COMMON_BUTTON COMMON_BUTTON_LARGE';
+        detail_button.textContent = "詳しくはこちら";
+        detail_button.addEventListener('click', function() {
             // 出店者IDを詳細画面に渡し，ページ遷移
         })
-        resultcontainer.appendChild(detailButton);
+        result_container.appendChild(detail_button);
 
-        resultlist.appendChild(resultcontainer);
+        result_list.appendChild(result_container);
         count++;
     }
-    create_no_search_text(resultlist, count);
+    create_no_search_text(result_list, count);
+    return 0;
 }
 
 function place_view_result(searched_elements) {
-    const resultlist = document.querySelector('#PLACE_VIEW');
+    const result_list = document.querySelector('#place_view');
     let count = 0;
     for (let i = 0; i < searched_elements.length; i++) {
         if (searched_elements[i].場所名 == null) continue;
-        const resultcontainer = document.createElement('div');
-        resultcontainer.className = 'RESULT_CONTAINER';
+        const result_container = document.createElement('div');
+        result_container.className = 'RESULT_CONTAINER';
 
-        const placeName = document.createElement('p');
-        placeName.className = 'COMMON_TEXT STORE_NAME_TEXT';
+        const place_name = document.createElement('p');
+        place_name.className = 'COMMON_TEXT STORE_NAME_TEXT';
         console.log(searched_elements[i].場所名);
-        placeName.textContent = searched_elements[i].場所名;
-        resultcontainer.appendChild(placeName);
+        place_name.textContent = searched_elements[i].場所名;
+        result_container.appendChild(placeName);
 
-        const detailButton = document.createElement('button');
-        detailButton.className = 'COMMON_BUTTON';
-        detailButton.textContent = "詳しくはこちら";
-        detailButton.addEventListener('click', function() {
+        const detail_button = document.createElement('button');
+        detail_button.className = 'COMMON_BUTTON';
+        detail_button.textContent = "詳しくはこちら";
+        detail_button.addEventListener('click', function() {
             // 場所IDを詳細画面に渡し，ページ遷移
         })
-        resultlist.appendChild(resultcontainer);
+        result_list.appendChild(resultcontainer);
         count++;
     }
-    create_no_search_text(resultlist, count);
+    create_no_search_text(result_list, count);
+    return 0;
 }
 
 function create_no_search_text(parent_element, count) {
@@ -81,4 +84,5 @@ function create_no_search_text(parent_element, count) {
         textbox.textContent = '合致するものが見つかりませんでした';
         parent_element.appendChild(textbox);
     }
+    return 0;
 }
