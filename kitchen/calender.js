@@ -133,3 +133,20 @@ function setSelected(year, month, day){
     selectedMonth = month;
     selectedDay = day;
 }
+
+//出店予定がある日にアイコンを追加する
+//動作確認できてません
+function add_icon(year,month){
+    const events = fetchEventsFromDB(year, month);
+
+    const days = document.querySelectorAll('.day');
+    days.forEach(dayElement => {
+        const date = dayElement.getAttribute('data-date');
+        if (events[date]) {
+            const icon = document.createElement('span');
+            icon.classList.add('icon');
+            icon.textContent = '•';  // 予定がある日はカレンダーアイコンを表示
+            dayElement.appendChild(icon);
+        }
+    });
+}
