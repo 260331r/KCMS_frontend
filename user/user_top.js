@@ -4,16 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // 「次へ」ボタンを押したときの処理
-document.querySelector("#NEXT_BUTTON").addEventListener("click", function() {
-    const selectElement = document.getElementById("SEARCH_TYPE_BOX");
-    const selectedOption = selectElement.options[selectElement.selectedIndex];
-    const selectedValue = selectElement.value;
+document.querySelector("#next_button").addEventListener("click", function() {
+    const select_element = document.getElementById("search_type_box");
+    const selected_option = select_element.options[select_element.selectedIndex];
+    const selected_value = select_element.value;
 
-    if (selectedOption.hidden) {
+    if (selected_option.hidden) {
         preventDefault();
     }
-    if (selectedValue) {
-        window.location.href = selectedValue;
+    if (selected_value) {
+        window.location.href = selected_value;
     }
 });
 
@@ -55,7 +55,7 @@ async function make_container(){
 
     clear_text();
 
-    const todayscontainer = document.querySelector('.TODAYS_LIST');
+    const todays_container = document.querySelector('.TODAYS_LIST');
     const owner_list = delete_deplicate(searched_elements);
 
     // 三つまで表示させる
@@ -67,36 +67,37 @@ async function make_container(){
     }
 
     for (let i = 0; i < range; i++) {
-        const resultcontainer = document.createElement('div');
-        resultcontainer.className = "TODAYS_CONTAINER";
+        const result_container = document.createElement('div');
+        result_container.className = "TODAYS_CONTAINER";
         // 店舗名書き込み
-        const storeName = document.createElement('p');
-        storeName.className = 'COMMON_TEXT NAME_TEXT';
+        const store_name = document.createElement('p');
+        store_name.className = 'COMMON_TEXT NAME_TEXT';
         // 全部色が#ff7f00だとメリハリがつかない気がする．
-        storeName.style = 'color: black'; 
-        storeName.textContent = "店舗名 : " + owner_list[i].出店者名;
-        resultcontainer.appendChild(storeName);
+        store_name.style = 'color: black'; 
+        store_name.textContent = "店舗名 : " + owner_list[i].出店者名;
+        result_container.appendChild(store_name);
         // 商品ジャンル
-        const storeGenre = document.createElement('p');
-        storeGenre.className = 'COMMON_TEXT GENRE_TEXT';
-        storeGenre.textContent = "商品ジャンル ： " + owner_list[i].商品ジャンル;
-        resultcontainer.appendChild(storeGenre);
+        const store_genre = document.createElement('p');
+        store_genre.className = 'COMMON_TEXT GENRE_TEXT';
+        store_genre.textContent = "商品ジャンル ： " + owner_list[i].商品ジャンル;
+        result_container.appendChild(store_genre);
 
         // 開催場所
-        const storePlace = document.createElement('p');
-        storePlace.className = 'COMMON_TEXT ADDRESS_TEXT';
-        storePlace.textContent = "開催場所 : " + owner_list[i].場所名;
-        storePlace.style = 'color: black';
-        resultcontainer.appendChild(storePlace);
+        const store_place = document.createElement('p');
+        store_place.className = 'COMMON_TEXT ADDRESS_TEXT';
+        store_place.textContent = "開催場所 : " + owner_list[i].場所名;
+        store_place.style = 'color: black';
+        result_container.appendChild(store_place);
         // 住所
-        const storeCity = document.createElement('p');
-        storeCity.className = 'COMMON_TEXT ADDRESS_TEXT';
-        storeCity.textContent = "住所 : " + owner_list[i].住所;
-        storeCity.style = 'color: black';
-        resultcontainer.appendChild(storeCity);
+        const store_city = document.createElement('p');
+        store_city.className = 'COMMON_TEXT ADDRESS_TEXT';
+        store_city.textContent = "住所 : " + owner_list[i].住所;
+        store_city.style = 'color: black';
+        result_container.appendChild(store_city);
 
-        todayscontainer.appendChild(resultcontainer);    
+        todays_container.appendChild(result_container);    
     }
+    return 0;
 }
 
 // ダブりの出店者が出るので,ダブりを排除する関数
