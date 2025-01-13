@@ -74,7 +74,7 @@ function format_date(dateString) {
 
 // 利用者のアカウントIDからマッチング依頼を取得する関数
 async function db_all_elements(user_id) {
-    const response = await fetch("http://127.0.0.1:8000/api/store/store_matching_request/get_store_infor/", {
+    const response = await fetch("http://127.0.0.1:8000/api/store/store_matching_request/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
