@@ -43,7 +43,13 @@ function make_frame(request_details){
     // 出店者名
     const place_name = document.createElement("p");
     place_name.className = "NAME_TEXT";
-    place_name.textContent = "出店者名 : " + request_details.出店者名;
+    //クリック可能なリンク
+    const link = document.createElement("a");
+    // 遷移先URL（acceptance_form.htmlにstore_idを渡す）
+    link.href = `/acceptance_form.html?store_id=${request_details.出店者ID}`;
+    link.textContent = "出店者名 : " + request_details.出店者名;
+    link.style.color = "#FF7F00"; // リンクの色を設定（必要に応じて調整）
+    place_name.appendChild(link);
     frame.append(place_name);
 
     // 商品ジャンル

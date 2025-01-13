@@ -1,5 +1,7 @@
 // 初期設定
 document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const store_id = urlParams.get("store_id"); 
     init_create_schedule_list();
 });
 
@@ -54,7 +56,7 @@ function make_frame(shop_details) {
 }
 
 // アカウントIDからキッチンカー情報を取得する関数
-async function db_all_elements(user_id) {
+async function db_all_elements(store_id) {
     const response = await fetch("http://127.0.0.1:8000/api/locate/get_store_infor/", {
         method: "POST",
         headers: {
