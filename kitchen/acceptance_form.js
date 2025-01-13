@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const store_id = urlParams.get("place_id"); 
     init_create_schedule_list();
 });
 
@@ -23,14 +25,14 @@ async function init_create_schedule_list() {
 }
 
 // サーバーからスケジュールを取得する関数
-async function fetch_schedule_from_server(user_id) {
-    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_schedule_check/", {
+async function fetch_schedule_from_server(place_id) {
+    const response = await fetch("http://127.0.0.1:8000/api/store/store_matching_accept/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "user_id":{"ユーザID":user_id}
+            "place_id":{"ユーザID":place_id}
         })
     });
 
