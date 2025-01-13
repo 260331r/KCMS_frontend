@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=0.8">
         <link rel="stylesheet" href="user_top.css">
-        <link rel="stylesheet" href="calender.css">
+        <script src="user_top.js"></script>
     </head>
 
     <body>
@@ -15,14 +15,14 @@
         <div>
             <form>
                 <label for="SEARCH_TYPE"></label>
-                <select id="SEARCH_TYPE_BOX">
+                <select id="search_type_box">
                     <option hidden>検索はこちら</option>
                     <option value='./keyword_search.html'>キーワードで検索</option>
                     <option value='./genre_search.html'>ジャンル別に検索</option>
                     <option value='./place_search.html'>地域別に検索</option>
                     <option value='./calender_search.html'>日付から検索</option>
                 </select>
-                <button id="NEXT_BUTTON" class="COMMON_BUTTON" type="button">次へ</button>
+                <button id="next_button" class="COMMON_BUTTON" type="button">次へ</button>
             </form>
         </div>
 
@@ -32,7 +32,6 @@
             <div class="TODAYS_LIST"></div>
         </div>
         <span id="error"></span>
-        <script src="user_top.js"></script>
     </body>
     
 </html>

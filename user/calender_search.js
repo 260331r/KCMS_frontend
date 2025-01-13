@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#SEARCH_BUTTON').addEventListener('click', async function() {
-        const date = document.getElementById('DATE').value;
+    document.querySelector('#search_button').addEventListener('click', async function() {
+        const date = document.getElementById('date').value;
         if (date) {
             console.log(date);
         } else {
@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const searched_elements = await db_search_elements(date);
         //console.log(searched_elements);
         // 別ページへオブジェクトを渡すための処理
-        const encodedObject = encodeURIComponent(JSON.stringify(searched_elements));
-        window.location.href = `./calender_search_result.html?param=${encodedObject}`;
+        const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
+        window.location.href = `./calender_search_result.html?param=${encoded_object}`;
     });
 });
 

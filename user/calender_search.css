@@ -1,6 +1,4 @@
-/*虫眼鏡 余裕があれば
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-*/
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Zen+Maru+Gothic&display=swap');
 body{
     height: 100vh;
     margin-bottom: 30px;
@@ -25,7 +23,7 @@ select{
 .COMMON_TEXT{
     font-size: 40px;
     color: #FF7F00;
-    font-family: "ヒラギノ丸ゴ ProN";
+    font-family: "Hachi Maru Pop", cursive;
 }
 
 .USER_TEXT_HEAD{

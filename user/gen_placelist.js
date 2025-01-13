@@ -18,12 +18,12 @@ sec.addEventListener(`change`, function() {
     selectplace = this.options[sec.value].textContent;
 });
 
-const button = document.getElementById('PLACE_NEXT_BUTTON');
+const button = document.getElementById('place_next_button');
 button.onclick= async function() {
     const searched_elements = await db_search_elements(selectplace);
     // 別ページへオブジェクトを渡すための処理
-    const encodedObject = encodeURIComponent(JSON.stringify(searched_elements));
-    window.location.href = `./place_search_result.html?param=${encodedObject}`;
+    const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
+    window.location.href = `./place_search_result.html?param=${encoded_object}`;
 };
 
 // データベースから地域を元に場所提供者のリストを取得する関数
@@ -54,8 +54,10 @@ async function db_search_elements(place){
 
 function create_not_search_text() {
     console.log('何もありませんでした．');
+    return 0;
 }
 
 function create_server_error_text() {
     console.log('サーバーエラーです．')
+    return 0;
 }
