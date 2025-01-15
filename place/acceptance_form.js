@@ -1,35 +1,51 @@
 // 初期設定
 document.addEventListener("DOMContentLoaded", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const store_id = urlParams.get("store_id"); 
-    init_create_schedule_list();
+    const store_info = new URLSearchParams(window.location.search);
+    const store_id = store_info.get("store_id");
+    const genre = store_info.get("genre");
+    const name = store_info.get("name");
+    const menu = store_info.get("menu");
+
+    // 店舗情報をHTMLに表示
+    displayStoreInfo(name, genre, menu);
+
+    // 出店日時リストの作成を開始
+    if (store_id) {
+        init_create_schedule_list(store_id);
+    } else {
+        create_error_text("店舗IDが見つかりません。");
+    }
 });
 
+// 店舗情報をHTMLに表示する関数
+function displayStoreInfo(name, genre, menu) {
+    document.getElementById("store_name").textContent = name || "店舗名不明";
+    document.getElementById("store_genre").textContent = genre || "ジャンル不明";
+    document.getElementById("store_menu").textContent = menu || "メニュー情報なし";
+}
+
 // 出店日時のリストを作成する関数
-async function init_create_schedule_list() {
-    const user_id = localStorage.getItem("user_id");  // ローカルストレージからユーザーIDを取得
+async function init_create_schedule_list(store_id) {
+    try {
+        const all_elements = await db_all_elements(store_id);
+        const list = document.getElementById("list");
 
-    if (!user_id || user_id.trim() === "") {  // 空文字チェック
-        document.getElementById("error").textContent = "ユーザーIDが見つかりません";
-        return;
-    }
-
-    const all_elements = await db_all_elements(user_id);  // 出店予定情報を取得
-    const list = document.getElementById("list");
-
-    if (all_elements.length > 0) {
-        create_schedule_frame_list(all_elements, list);  // 出店予定があればリストを作成
-    } else {
-        create_error_text();  // 出店予定がなければエラーメッセージを表示
+        if (all_elements.length > 0) {
+            create_schedule_frame_list(all_elements, list); // 出店予定リストを作成
+        } else {
+            create_error_text("出店予定が見つかりません。");
+        }
+    } catch (error) {
+        create_error_text("サーバーとの通信に失敗しました。");
     }
 }
 
 // 出店予定リストの枠を作成する関数
 function create_schedule_frame_list(shop_array, list) {
-    for (let i = 0; i < shop_array.length; i++) {
-        const frame = make_frame(shop_array[i]);
+    shop_array.forEach(shop_details => {
+        const frame = make_frame(shop_details);
         list.append(frame);
-    }
+    });
 }
 
 // 各リスト項目の枠を作成する関数
@@ -55,49 +71,26 @@ function make_frame(shop_details) {
     return frame;
 }
 
-// ダミーデータを返す関数
-async function db_all_elements(user_id) {
-    const dummy_data = [
-        {
-            出店者名: "キッチンカーA",
-            商品ジャンル: "タコス",
-            メニュー: "タコス、ブリトー",
-            写真: "https://via.placeholder.com/300",
-            日時: "2025-02-15T10:00:00",
-            営業時間: "10:00 - 18:00"
+// ストアIDからキッチンカー情報を取得する関数
+async function db_all_elements(store_id) {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_matching_accept/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
         },
-        {
-            出店者名: "キッチンカーB",
-            商品ジャンル: "弁当",
-            メニュー: "のり弁、おにぎり",
-            写真: "https://via.placeholder.com/300",
-            日時: "2025-02-20T10:00:00",
-            営業時間: "11:00 - 14:00"
-        }
-    ];
+        body: JSON.stringify({ "store_id": store_id })
+    });
 
-    // 出店者情報をページに表示
-    if (dummy_data.length > 0) {
-        const store = dummy_data[0];
-        document.getElementById("store_name").textContent = store.出店者名 || "未定";
-        document.getElementById("store_genre").textContent = store.商品ジャンル || "未定";
-        document.getElementById("store_menu").textContent = store.メニュー || "未定";
-        document.getElementById("store_photo").src = store.写真 || "default.jpg";  // 写真がなければデフォルト画像
+    if (!response.ok) {
+        throw new Error("サーバーエラー");
     }
 
-    // ダミーデータを返す
-    return dummy_data;
+    const result = await response.json();
+    return result.length > 0 ? result : [];
 }
 
-// 出店予定がない場合にエラーメッセージを表示する関数
-function create_error_text() {
+// エラーメッセージを表示する関数
+function create_error_text(message) {
     const error_text_box = document.getElementById("error");
-    error_text_box.textContent = "出店予定がありません"; // 出店予定がない場合のメッセージ
-}
-
-// サーバーエラーが発生した場合のメッセージ
-function create_server_error_text() {
-    const text_box = document.getElementById("error");
-    text_box.className = "COMMON_TEXT";
-    text_box.textContent = "サーバーエラーが発生しました";
+    error_text_box.textContent = message;
 }
