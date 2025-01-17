@@ -6,10 +6,12 @@ function fetch_before() {
     const url_params = new URLSearchParams(window.location.search);
     const encoded_data = url_params.get('param');
     console.log(encoded_data);
-    if (encoded_data) {
+    if (encoded_data.length !== 2) {
         const searched_elements = JSON.parse(decodeURIComponent(encoded_data));
         console.log(searched_elements);
         view_result(searched_elements);
+    } else {
+        view_error();
     }
     return 0;
 }
@@ -41,4 +43,9 @@ function view_result(searched_elements) {
         resultlist.appendChild(result_container);
     }
     return 0;
+}
+
+function view_error() {
+    const error_text = document.getElementById('error');
+    error_text.textContent = "条件に合致するキッチンカーは見つかりませんでした"
 }
