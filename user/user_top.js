@@ -1,24 +1,28 @@
 // 初期設定
 document.addEventListener("DOMContentLoaded", () => {
     make_container();
+    give_func_button();
 });
 
-// 「次へ」ボタンを押したときの処理
-document.querySelector("#next_button").addEventListener("click", function() {
-    const select_element = document.getElementById("search_type_box");
-    const selected_option = select_element.options[select_element.selectedIndex];
-    const selected_value = select_element.value;
+function give_func_button() {
+    // 「次へ」ボタンを押したときの処理
+    document.querySelector("#next_button").addEventListener("click", function() {
+        const select_element = document.getElementById("search_type_box");
+        const selected_option = select_element.options[select_element.selectedIndex];
+        const selected_value = select_element.value;
 
-    if (selected_option.hidden) {
-        preventDefault();
-    }
-    if (selected_value) {
-        window.location.href = selected_value;
-    }
-});
+        if (selected_option.hidden) {
+            preventDefault();
+        }
+        if (selected_value) {
+            window.location.href = selected_value;
+        }
+    });
+}
 
 // データベースから今日の日付で出店するキッチンカーを取得する関数
 async function db_search_elements(date){
+    create_not_search_text();
     const response = await fetch("http://127.0.0.1:8000/api/user/user_search_calendar/", {
         method: "POST",
         headers: {
@@ -28,7 +32,7 @@ async function db_search_elements(date){
             "datetime": date
         })
     });
-
+    clear_text();
     try {
         const result = await response.json();
         
@@ -47,13 +51,13 @@ async function db_search_elements(date){
 async function make_container(){
     const today = new Date();
     // 日付をSQLに合わせる
+
     const searched_elements = await db_search_elements(today.toISOString().split('T')[0]); 
+
     // 無い場合は処理終了
     if (!searched_elements || searched_elements.length === 0) {
         return;
     }    
-
-    clear_text();
 
     const todays_container = document.querySelector('.TODAYS_LIST');
     const owner_list = delete_deplicate(searched_elements);
@@ -130,14 +134,14 @@ function create_not_search_text(){
 // データベースとの通信でエラーが起こった場合のエラー文を表示する関数
 function create_server_error_text(){
     const text_box = document.getElementById("error");
-    text_box.innerText = "サーバーエラーが起こりました";
+    text_box.textContent = "サーバーエラーがおこりました";
 
     return 0;
 }
 // エラー文等リセット
 function clear_text() {
     const text_box = document.getElementById("error");
-    text_box.innerHTML = "";
+    text_box.textContent = "";
 
     return 0;
 }

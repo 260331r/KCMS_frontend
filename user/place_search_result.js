@@ -6,11 +6,11 @@ function fetch_before() {
     const url_params = new URLSearchParams(window.location.search);
     const encoded_data = url_params.get('param');
     console.log(encoded_data);
-    if (encoded_data) {
+    if (encoded_data.length !== 2) {
         const searched_elements = JSON.parse(decodeURIComponent(encoded_data));
         view_result(searched_elements);
     } else {
-
+        view_error(encoded_data);
     }
 }
 // 検索結果を表示させる．
@@ -38,4 +38,9 @@ function view_result(searched_elements) {
 
         result_list.appendChild(result_container);
     }
+}
+
+function view_error() {
+    const element = document.getElementById('error');
+    element.textContent = "条件に合致する場所が見つかりませんでした．"
 }

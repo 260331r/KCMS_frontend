@@ -133,3 +133,8 @@ select{
 .ADDRESS_TEXT{
     font-size: 20px;
 }
+
+.ERROR_TEXT{
+    font-size: 30px;
+    color: black;
+}

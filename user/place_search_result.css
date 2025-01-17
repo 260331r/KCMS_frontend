@@ -131,3 +131,7 @@ select{
     height: 200px;
     margin-top: 50px;
 }
+.ERROR_TEXT{
+    font-size: 30px;
+    color: black;
+}

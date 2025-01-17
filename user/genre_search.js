@@ -1,11 +1,21 @@
-document.querySelector('#search_button').addEventListener('click', async function() {
-    const genre = document.querySelector('#genre_input').value;
-    console.log(genre);
-    const searched_elements = await db_search_elements(genre);
-    // 別ページへオブジェクトを渡すための処理
-    const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
-    window.location.href = `./store_search_result.html?param=${encoded_object}`;
-})
+document.addEventListener("DOMContentLoaded", () => {
+    give_func_button();
+});
+
+function give_func_button() {
+    document.querySelector('#search_button').addEventListener('click', async function() {
+        const genre = document.querySelector('#genre_input').value;
+        //console.log(genre);
+        const searched_elements = await db_search_elements(genre);
+        // 別ページへオブジェクトを渡すための処理
+        const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
+        if (!encoded_object) {
+            create_server_error_text();
+        } else {
+            window.location.href = `./store_search_result.html?param=${encoded_object}`;
+        }
+    });
+}
 
 // 商品ジャンルを元にデータベースから出店者のリストを取得する関数
 async function db_search_elements(genre){
@@ -22,8 +32,8 @@ async function db_search_elements(genre){
     try {
         const result = await response.json();
         
-        if (!response.ok || !result || result.length <= 0) {
-            create_not_search_text();
+        if (!response.ok) {
+            create_http_error_text();
         }
 
         return result;
@@ -33,12 +43,14 @@ async function db_search_elements(genre){
     return false;
 }
 
-function create_not_search_text() {
-    console.log('何もありませんでした．');
+function create_http_error_text() {
+    const error_text = document.getElementById('error');
+    error_text = "HTTPエラーです";
     return 0;
 }
 
 function create_server_error_text() {
-    console.log('サーバーエラーです．');
+    const error_text = document.getElementById('error');
+    error_text = "サーバーエラーです";
     return 0;
 }

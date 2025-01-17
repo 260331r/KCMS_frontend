@@ -1,41 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#search_button').addEventListener('click', async function() {
         const date = document.getElementById('date').value;
-        if (date) {
-            console.log(date);
-        } else {
+        if (!date) {
+            empty_error_text();
             return;
         }
+
+        // データベースに接続していないとここで止まる
         const searched_elements = await db_search_elements(date);
-        //console.log(searched_elements);
+
         // 別ページへオブジェクトを渡すための処理
-        const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
-        window.location.href = `./calender_search_result.html?param=${encoded_object}`;
+        if (searched_elements) {
+            const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
+            window.location.href = `./calender_search_result.html?param=${encoded_object}`;
+        } else {
+            window.location.href = './calender_search_result.html';
+        }
+        
     });
 });
 
 async function db_search_elements(date){
-    const response = await fetch("http://127.0.0.1:8000/api/user/user_search_calendar/", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "datetime": date
-        })
-    });
-
     try {
-        const result = await response.json();
+        const response = await fetch("http://127.0.0.1:8000/api/user/user_search_calendar/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "datetime": date
+            })
+        });
         
-        if (!response.ok || !result || result.length <= 0) {
-            create_not_search_text();
+        if (!response.ok) {
+            return false;
         }
 
+        const result = await response.json();
+        /*
+        if (!response.ok || !result || result.length <= 0) {
+            create_not_search_text();
+        }*/
         return result;
     } catch (error) {
-        create_server_error_text();
+        //create_server_error_text();
+        return null;
     }
+}
 
-    return false;
+
+function empty_error_text() {
+    const error_text = document.getElementById('error');
+    error_text.textContent = "※日付を入力してください！";
 }

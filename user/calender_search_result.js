@@ -5,9 +5,13 @@ document.addEventListener("DOMContentLoaded", () => {
 function fetch_before() {
     const url_params = new URLSearchParams(window.location.search);
     const encoded_data = url_params.get('param');
-    if (encoded_data) {
+    if (encoded_data == null) {
+        view_error();
+    } else if (encoded_data.length !== 2) {
         const searched_elements = JSON.parse(decodeURIComponent(encoded_data));
         view_result(searched_elements);
+    } else {
+        view_no_search_text();
     }
 }
 
@@ -45,4 +49,16 @@ function view_result(searched_elements) {
 
         result_list.appendChild(result_container);
     }
+}
+
+function view_no_search_text() {
+    const error_text = document.getElementById('error');
+    error_text.textContent = "出店予定が見つかりませんでした";
+    return 0;
+} 
+
+function view_error() {
+    const error_text = document.getElementById('error');
+    error_text.innerText = "データベースから情報を取得できませんでした"
+    return 0;
 }

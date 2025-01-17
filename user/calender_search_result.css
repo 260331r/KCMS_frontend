@@ -150,3 +150,8 @@ select{
 .GENRE_TEXT{
     font-size: 15px;
 }
+
+.ERROR_TEXT{
+    font-size: 30px;
+    color: black;
+}

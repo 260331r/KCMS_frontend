@@ -122,3 +122,8 @@ select{
     height: 50px;
     width: 200px
 }
+
+.ERROR_TEXT{
+    font-size: 30px;
+    color: black;
+}
