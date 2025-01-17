@@ -43,7 +43,22 @@ function make_frame(request_details){
     // 出店者名
     const place_name = document.createElement("p");
     place_name.className = "NAME_TEXT";
-    place_name.textContent = "出店者名 : " + request_details.出店者名;
+
+    // 遷移先に送る情報を作成
+    const store_info = new URLSearchParams({
+        store_id: request_details.出店者ID,
+        genre: request_details.商品ジャンル,
+        name: request_details.出店者名,
+        menu: request_details.備考
+    });
+
+    //クリック可能なリンク
+    const link = document.createElement("a");
+    // 遷移先URL（acceptance_form.htmlにquery_parmsを渡す）
+    link.href = `/acceptance_form.html?${store_info.toString()}`;
+    link.textContent = "出店者名 : " + request_details.出店者名;
+    link.style.color = "#FF7F00"; // リンクの色を設定（必要に応じて調整）
+    place_name.appendChild(link);
     frame.append(place_name);
 
     // 商品ジャンル
@@ -68,7 +83,7 @@ function format_date(dateString) {
 
 // 利用者のアカウントIDからマッチング依頼を取得する関数
 async function db_all_elements(user_id) {
-    const response = await fetch("http://127.0.0.1:8000/api/locate/lace_owner_matching_request/get_store_infor/", {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_matching_accept/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"

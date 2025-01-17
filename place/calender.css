@@ -1,0 +1,128 @@
+/*クラス名等は後で修正します*/
+body{
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    background-color: #FFFDD0;
+}
+
+.common_Header{
+    height: 70px;
+    background-color: #FFFDD0;
+}
+
+.common_Text{
+    justify-content: center; 
+    align-items: center;
+    color: #FF7F00;
+    font-family: "ヒラギノ丸ゴ ProN";
+}
+
+.common_Button{
+    border-radius:8px; 
+    border-color: #FF7F00;
+    font-size:30px;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #FF7F00;
+}
+
+.schedule_Text{
+    font-size: 50px;
+    position: relative;
+    display: inline-block;
+    width: 800px;
+}
+
+.schedule_Text::before,
+.schedule_Text::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: 3px dashed #FF7F00;
+}
+
+.schedule_Text::before{
+    top:-5px;
+}
+
+.schedule_Text::after{
+    bottom: -5px;
+}
+
+.calendar{
+    width: 600px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    left: 50%;
+    margin-top: 5%;
+    transform: translateX(-50%);
+}
+
+.calendar::after{
+    bottom: 30px;
+}
+
+.calendar_Header{
+    background: #007BFF;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#calendar_Header_Text{
+    color: #FFFFFF;
+}
+
+.nav_Button{
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.nav_Button:hover{
+    text-decoration: underline;
+}
+
+#calendar_Header_Text{
+    font-size: 30px;
+}
+
+.calendar_Days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar_Day{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.calendar_Day.weekday {
+    background: #F4F4F4;
+    font-weight: bold;
+}
+
+.calendar_Day.current_Day {
+    background: #007BFF;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.calendar_Day:not(.weekday):hover {
+    background: #D9E6FF;
+    cursor: pointer;
+}

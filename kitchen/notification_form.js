@@ -40,10 +40,16 @@ function make_frame(request_details){
     place_schedule.textContent = "出店希望日時 : " + format_date(request_details.日時);
     frame.append(place_schedule);
 
-    // 出店者名
+    // 場所名
     const place_name = document.createElement("p");
     place_name.className = "NAME_TEXT";
-    place_name.textContent = "場所名 : " + request_details.場所名;
+    //クリック可能なリンク
+    const link = document.createElement("a");
+    // 遷移先URL（acceptance_form.htmlにplace_idを渡す）
+    link.href = `/acceptance_form.html?store_id=${request_details.場所ID}`;
+    link.textContent = "場所名 : " + request_details.場所名;
+    link.style.color = "#FF7F00"; // リンクの色を設定（必要に応じて調整）
+    place_name.appendChild(link);
     frame.append(place_name);
 
     // 商品ジャンル
@@ -68,7 +74,7 @@ function format_date(dateString) {
 
 // 利用者のアカウントIDからマッチング依頼を取得する関数
 async function db_all_elements(user_id) {
-    const response = await fetch("http://127.0.0.1:8000/api/store/store_matching_request/get_store_infor/", {
+    const response = await fetch("http://127.0.0.1:8000/api/store/store_matching_request/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
