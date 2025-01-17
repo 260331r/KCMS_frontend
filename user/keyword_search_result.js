@@ -32,7 +32,7 @@ function store_view_result(searched_elements) {
         store_name.className = 'COMMON_TEXT STORE_NAME_TEXT';
         console.log(searched_elements[i].出店者名);
         store_name.textContent = searched_elements[i].出店者名;
-        result_container.appendChild(storeName);
+        result_container.appendChild(store_name);
 
         const detail_button = document.createElement('button');
         detail_button.className = 'COMMON_BUTTON COMMON_BUTTON_LARGE';
@@ -45,7 +45,7 @@ function store_view_result(searched_elements) {
         result_list.appendChild(result_container);
         count++;
     }
-    create_no_search_text(result_list, count);
+    create_nostore_search_text(result_list, count);
     return 0;
 }
 
@@ -61,7 +61,7 @@ function place_view_result(searched_elements) {
         place_name.className = 'COMMON_TEXT STORE_NAME_TEXT';
         console.log(searched_elements[i].場所名);
         place_name.textContent = searched_elements[i].場所名;
-        result_container.appendChild(placeName);
+        result_container.appendChild(place_name);
 
         const detail_button = document.createElement('button');
         detail_button.className = 'COMMON_BUTTON';
@@ -69,19 +69,32 @@ function place_view_result(searched_elements) {
         detail_button.addEventListener('click', function() {
             // 場所IDを詳細画面に渡し，ページ遷移
         })
-        result_list.appendChild(resultcontainer);
+        result_list.appendChild(result_container);
         count++;
     }
-    create_no_search_text(result_list, count);
+    create_noplace_search_text(result_list, count);
     return 0;
 }
 
-function create_no_search_text(parent_element, count) {
+function create_nostore_search_text(parent_element, count) {
     if (count === 0){
         const textbox = document.createElement('p');
         textbox.className = 'COMMON_TEXT';
         textbox.style = 'color: black';
-        textbox.textContent = '合致するものが見つかりませんでした';
+        textbox.textContent = '合致する出店者が見つかりませんでした';
+        parent_element.appendChild(textbox);
+    }
+    return 0;
+}
+
+function create_noplace_search_text(parent_element, count) {
+    console.log('aaa');
+    if (count === 0){
+        console.log('a');
+        const textbox = document.createElement('p');
+        textbox.className = 'COMMON_TEXT';
+        textbox.style = 'color: black';
+        textbox.textContent = '合致する場所提供者が見つかりませんでした';
         parent_element.appendChild(textbox);
     }
     return 0;
