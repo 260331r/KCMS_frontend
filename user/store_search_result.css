@@ -81,6 +81,7 @@ select{
     color: #ff7f00;
     font-size: 1em;
     cursor: pointer;
+    margin-top: 30px;
 }
 
 .COMMON_BUTTON:hover{
@@ -125,9 +126,26 @@ select{
     background-color: #fff;
     border: solid 2px #FF7F00;
     width: 450px;
-    height: 200px;
-    margin-top: 50px;
+    height: 300px;
+    margin-top: 25px;
 }
+.NAME_TEXT{
+    font-size: 30px;
+    color: #FF7F00;
+}
+
+.GENRE_TEXT{
+    font-size: 22px
+}
+
+.PHONE_TEXT{
+    font-size: 20px;
+}
+
+.MAIL_TEXT{
+    font-size: 15px;
+}
+
 .ERROR_TEXT{
     font-size: 30px;
     color: black;

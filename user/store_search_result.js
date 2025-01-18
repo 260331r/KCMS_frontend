@@ -13,6 +13,7 @@ function fetch_before() {
     } else {
         view_error();
     }
+    before_button();
     return 0;
 }
 
@@ -30,16 +31,24 @@ function view_result(searched_elements) {
         store_name.textContent = searched_elements[i].出店者名;
         result_container.appendChild(store_name);
 
-        const detail_button = document.createElement('button');
-        detail_button.className = 'COMMON_BUTTON COMMON_BUTTON_LARGE';
-        detail_button.textContent = '詳しくはこちら';
+        // 商品ジャンル
+        const store_jenre = document.createElement('p');
+        store_jenre.className = "COMMON_TEXT GENRE_TEXT";
+        store_jenre.textContent = "商品ジャンル:" + searched_elements[i].商品ジャンル;
+        result_container.appendChild(store_jenre);
 
-        detail_button.addEventListener('click', function() {
-            // 店舗IDを場所提供者詳細画面へ渡す．
-            // window.location.href=`../store/sample.html?id={searched_elements[i].場所ID}`;
-        });
-        result_container.appendChild(detail_button);
+        // 電話番号
+        const phone_number = document.createElement('p');
+        phone_number.className = "COMMON_TEXT PHONE_TEXT";
+        phone_number.textContent = "電話番号:" + searched_elements[i].電話番号;
+        result_container.appendChild(phone_number);
 
+        // メールアドレス
+        const mail_address = document.createElement('p');
+        mail_address.className = "COMMON_TEXT MAIL_TEXT";
+        mail_address.textContent = "メールアドレス:" + searched_elements[i].メールアドレス;
+        result_container.appendChild(mail_address);
+        
         resultlist.appendChild(result_container);
     }
     return 0;
@@ -48,4 +57,13 @@ function view_result(searched_elements) {
 function view_error() {
     const error_text = document.getElementById('error');
     error_text.textContent = "条件に合致するキッチンカーは見つかりませんでした"
+}
+
+function before_button() {
+    const before_button = document.getElementById('before_button');
+    before_button.className = "COMMON_BUTTON";
+    before_button.textContent = "戻る";
+    before_button.addEventListener("click", () =>{
+        window.location.href = './genre_search.html';
+    });
 }
