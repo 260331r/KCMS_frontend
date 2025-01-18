@@ -51,21 +51,22 @@ async function db_search_elements(date){
 async function make_container(){
     const today = new Date();
     // 日付をSQLに合わせる
-
+    console.log(today.toISOString().split('T')[0]);
     const searched_elements = await db_search_elements(today.toISOString().split('T')[0]); 
+    //const searched_elements = await db_search_elements(today); 
 
+    console.log(searched_elements);
     // 無い場合は処理終了
     if (!searched_elements || searched_elements.length === 0) {
         return;
     }    
 
     const todays_container = document.querySelector('.TODAYS_LIST');
-    const owner_list = delete_deplicate(searched_elements);
 
     // 三つまで表示させる
     let range;
-    if (3 > owner_list.length) {
-        range = owner_list.length;
+    if (3 > searched_elements) {
+        range = searched_elements.length;
     } else {
         range = 3;
     }
@@ -78,49 +79,30 @@ async function make_container(){
         store_name.className = 'COMMON_TEXT NAME_TEXT';
         // 全部色が#ff7f00だとメリハリがつかない気がする．
         store_name.style = 'color: black'; 
-        store_name.textContent = "店舗名 : " + owner_list[i].出店者名;
+        store_name.textContent = "店舗名 : " + searched_elements[i].出店者名;
         result_container.appendChild(store_name);
         // 商品ジャンル
         const store_genre = document.createElement('p');
         store_genre.className = 'COMMON_TEXT GENRE_TEXT';
-        store_genre.textContent = "商品ジャンル ： " + owner_list[i].商品ジャンル;
+        store_genre.textContent = "商品ジャンル ： " + searched_elements[i].商品ジャンル;
         result_container.appendChild(store_genre);
 
         // 開催場所
         const store_place = document.createElement('p');
         store_place.className = 'COMMON_TEXT ADDRESS_TEXT';
-        store_place.textContent = "開催場所 : " + owner_list[i].場所名;
+        store_place.textContent = "開催場所 : " + searched_elements[i].場所名;
         store_place.style = 'color: black';
         result_container.appendChild(store_place);
         // 住所
         const store_city = document.createElement('p');
         store_city.className = 'COMMON_TEXT ADDRESS_TEXT';
-        store_city.textContent = "住所 : " + owner_list[i].住所;
+        store_city.textContent = "住所 : " + searched_elements[i].住所;
         store_city.style = 'color: black';
         result_container.appendChild(store_city);
 
         todays_container.appendChild(result_container);    
     }
     return 0;
-}
-
-// ダブりの出店者が出るので,ダブりを排除する関数
-// 時間も考慮するべき？
-function delete_deplicate(searched_list) {
-    for (let i = 0; i < searched_list.length; i++) {
-        let samecount = 0;
-        for (let j = i + 1; j < searched_list.length - 1; j++) {
-            if (searched_list[i].出店者名 === searched_list[j].出店者名) {
-                searched_list.splice(j, 1);
-                samecount++;
-            }
-        }
-        // マッチングが決定していないものは省く
-        if (samecount === 0) {
-            searched_list.splice(i, 1);
-        }
-    }
-    return searched_list;
 }
 
 // 検索結果が見つからなかった時のエラー文を表示する関数
