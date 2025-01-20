@@ -1,8 +1,37 @@
-/*虫眼鏡 余裕があれば
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-*/
 @import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Zen+Maru+Gothic&display=swap');
+header{
+    font-family: "Hachi Maru Pop", cursive;
+    width: 100%; 
+    height: 50px; 
+    background: #ff7f00; 
+    padding: 20px 50px; 
+    box-sizing: border-box; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 999;
+    display: flex; 
+    align-items: center; 
+}
+
+header .HEAD .MENU {
+    display: flex;
+}
+
+header .HEAD .MENU li{
+    list-style: none;
+    font-weight: bolder;
+}
+
+header .HEAD .MENU li + li{
+    margin-left: 50px;
+}
+
+header .TITLE{
+    margin-right: auto;
+}
 body{
+    padding-top: 20px;
     height: 100vh;
     margin: 0;
     text-align: center;
@@ -23,17 +52,17 @@ select{
 }
 
 .COMMON_TEXT{
-    font-size: 40px;
+    font-size: 4.5vw;
     color: #FF7F00;
     font-family: "Hachi Maru Pop", cursive;
 }
 
 .USER_TEXT_HEAD{
-    font-size: 60px;
+    font-size: 5vw;
     margin-top: 50px;
     position: relative;
     display: inline-block;
-    width: 800px;
+    width: 80%;
 }
 
 .USER_TEXT_HEAD::before, 
@@ -57,7 +86,7 @@ select{
     margin-top: 50px;
     position: relative;
     display: inline-block;
-    width: 800px;
+    width: 80%;
 }
 
 .USER_TEXT::before{
@@ -121,42 +150,45 @@ select{
 
 .RESULT_LIST{
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    gap: 20px;
+    margin: auto;
 }
 
 .RESULT_CONTAINER{
     background-color: #fff;
     border: solid 2px #FF7F00;
-    width: 450px;
-    height: 300px;
-    margin-top: 50px;
-    margin-bottom: 20px;
+    width: 45%;
+    max-width: 500px;
+    height: 10%;
 }
 
 .NAME_TEXT{
-    font-size: 30px;
+    font-size: 3vw;
     color: #FF7F00;
 }
 
 .GENRE_TEXT{
-    font-size: 22px
+    font-size: 2.5vw;
 }
 
 .ADDRESS_TEXT{
-    font-size: 20px;
+    font-size: 2vw;
 }
 
 .PHONE_TEXT{
-    font-size: 20px;
+    font-size: 2vw;
 }
 
 .MAIL_TEXT{
-    font-size: 15px;
+    font-size: 1.6vw;
 }
 
 .ERROR_TEXT{
-    font-size: 30px;
+    font-size: 2vw;
     color: black;
 }

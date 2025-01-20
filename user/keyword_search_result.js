@@ -17,7 +17,6 @@ function fetch_before() {
             return false;
         }   
     }
-    before_button();
     return 0;
 }
 
@@ -113,9 +112,7 @@ function create_nostore_search_text(parent_element, count) {
 }
 
 function create_noplace_search_text(parent_element, count) {
-    console.log('aaa');
     if (count === 0){
-        console.log('a');
         const textbox = document.createElement('p');
         textbox.className = 'COMMON_TEXT';
         textbox.style = 'color: black';
@@ -123,13 +120,4 @@ function create_noplace_search_text(parent_element, count) {
         parent_element.appendChild(textbox);
     }
     return 0;
-}
-
-function before_button() {
-    const before_button = document.getElementById('before_button');
-    before_button.className = "COMMON_BUTTON";
-    before_button.textContent = "戻る";
-    before_button.addEventListener("click", () =>{
-        window.location.href = './keyword_search.html';
-    });
 }

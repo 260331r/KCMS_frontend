@@ -6,6 +6,10 @@ function give_func_button() {
     document.querySelector('#search_button').addEventListener('click', async function() {
         const genre = document.querySelector('#genre_input').value;
         //console.log(genre);
+        if (genre.length === 0) {
+            create_no_value_text();
+            return;
+        }
         const searched_elements = await db_search_elements(genre);
         // 別ページへオブジェクトを渡すための処理
         const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
@@ -45,12 +49,18 @@ async function db_search_elements(genre){
 
 function create_http_error_text() {
     const error_text = document.getElementById('error');
-    error_text = "HTTPエラーです";
+    error_text.textContent = "HTTPエラーです";
     return 0;
 }
 
 function create_server_error_text() {
     const error_text = document.getElementById('error');
-    error_text = "サーバーエラーです";
+    error_text.textContent = "サーバーエラーです";
     return 0;
 }
+
+function create_no_value_text(){
+    const error_text = document.getElementById('error');
+    error_text.textContent = "※ジャンルを入力してください！";
+    return 0;
+} 

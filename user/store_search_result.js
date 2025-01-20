@@ -13,7 +13,6 @@ function fetch_before() {
     } else {
         view_error();
     }
-    before_button();
     return 0;
 }
 
@@ -25,7 +24,7 @@ function view_result(searched_elements) {
         result_container.className = 'RESULT_CONTAINER';
 
         const store_name = document.createElement('p');
-        store_name.className = 'COMMON_TEXT';
+        store_name.className = 'COMMON_TEXT NAME_TEXT';
         store_name.style = 'color: black';
         console.log(searched_elements[i].出店者名);
         store_name.textContent = searched_elements[i].出店者名;
@@ -57,13 +56,4 @@ function view_result(searched_elements) {
 function view_error() {
     const error_text = document.getElementById('error');
     error_text.textContent = "条件に合致するキッチンカーは見つかりませんでした"
-}
-
-function before_button() {
-    const before_button = document.getElementById('before_button');
-    before_button.className = "COMMON_BUTTON";
-    before_button.textContent = "戻る";
-    before_button.addEventListener("click", () =>{
-        window.location.href = './genre_search.html';
-    });
 }

@@ -12,7 +12,6 @@ function fetch_before() {
     } else {
         view_error(encoded_data);
     }
-    before_button();
     return 0;
 }
 // 検索結果を表示させる．
@@ -23,7 +22,7 @@ function view_result(searched_elements) {
         result_container.className = 'RESULT_CONTAINER';
         // 名前
         const place_name = document.createElement('p');
-        place_name.className = 'COMMON_TEXT';
+        place_name.className = 'COMMON_TEXT NAME_TEXT';
         place_name.style = 'color: black';
         place_name.textContent = searched_elements[i].場所名;
         result_container.appendChild(place_name);
@@ -53,13 +52,4 @@ function view_result(searched_elements) {
 function view_error() {
     const element = document.getElementById('error');
     element.textContent = "条件に合致する場所が見つかりませんでした．"
-}
-
-function before_button() {
-    const before_button = document.getElementById('before_button');
-    before_button.className = "COMMON_BUTTON";
-    before_button.textContent = "戻る";
-    before_button.addEventListener("click", () =>{
-        window.location.href = './place_search.html';
-    });
 }

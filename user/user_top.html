@@ -4,10 +4,22 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=0.8">
         <link rel="stylesheet" href="user_top.css">
+        <link rel="stylesheet" href="calender.css">
         <script src="user_top.js"></script>
+        <script src="calender.js"></script>
     </head>
 
     <body>
+        <header>
+            <h2 class="TITLE">KCMS</h2>
+            <nav class="HEAD">
+                <ul class="MENU">
+                    <li><a href="./login.html">ログイン</a></li>
+                    <li><a href="./choice.html">会員登録</a></li>
+                </ul>
+            </nav>
+        </header>
+
         <div class="COMMON_TEXT USER_TEXT_HEAD">
             <span>お客様用トップページ</span>
         </div>
@@ -26,13 +38,16 @@
             </form>
         </div>
 
-
-        <div class="COMMON_TEXT USER_TEXT TEXT_UNDERLINE">本日の出店</div>
-        <div>
-            <div class="TODAYS_LIST"></div>
+        <div class="calendar">
+            <div id="calendar_Header" class="calendar_Header">
+                <button id="pre_Month" class="common_Text nav_Button"> < </button>
+                <span id="calendar_Header_Text" class="common_Text "></span>
+                <button id="next_Month" class="common_Text nav_Button"> > </button>
+            </div>
+            <div class="calendar_Body">
+                <div id="calendar_Days" class="calendar_Days"></div>
+            </div>
         </div>
-        <br>
-        <span id="error" class="COMMON_TEXT ERROR_TEXT"></span>
     </body>
     
 </html>

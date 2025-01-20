@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     fetch_before();
+    goBack();
 })
 
 function fetch_before() {
@@ -37,12 +38,13 @@ function view_result(searched_elements) {
         const place_name = document.createElement('p');
         place_name.className = "COMMON_TEXT PLACE_NAME_TEXT";
         place_name.style = 'color: black';
-        place_name.textContent = "開催場所: " + searched_elements[i].場所名;
+        place_name.textContent = "出店日時: " + searched_elements[i].日時;
         result_container.appendChild(place_name);
 
 
         const address = document.createElement('p');
-        address.textContent = "住所: " + searched_elements[i].住所
+        address.textContent = "場所: " + searched_elements[i].住所;
+        address.className = "COMMON_TEXT ADDRESS_TEXT";
         address.style = 'color: black';
         result_container.appendChild(address);
 
@@ -61,4 +63,13 @@ function view_error() {
     const error_text = document.getElementById('error');
     error_text.innerText = "データベースから情報を取得できませんでした"
     return 0;
+}
+
+function goBack() {
+    if (window.history.length > 1) {
+        window.history.back();
+    } else {
+        window.location.href = './user_top.html';
+        return;
+    }
 }

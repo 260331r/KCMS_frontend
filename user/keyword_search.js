@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
             window.location.href = `./keyword_search_result.html?param=${encoded_object}`;
         } else {
+            create_no_text();
             return;
         }
     })
@@ -46,5 +47,11 @@ function create_not_search_text() {
 
 function create_server_error_text() {
     console.log('サーバーエラーです．');
+    return 0;
+}
+
+function create_no_text() {
+    const error_text = document.getElementById('error');
+    error_text.textContent = "※店舗名、もしくは場所名を入力してください！";
     return 0;
 }

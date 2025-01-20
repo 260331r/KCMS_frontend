@@ -7,14 +7,24 @@
         <script src="keyword_search.js"></script>
     </head>
     <body>
+        <header>
+            <h2 class="TITLE">KCMS</h2>
+            <nav class="HEAD">
+                <ul class="MENU">
+                    <li><a href="./user_top.html">ホームへ</a></li>
+                </ul>
+            </nav>
+        </header>
         <span class="COMMON_TEXT USER_TEXT_HEAD">キーワード検索</span>
         <br>
-        <div class="KEYWORD_CONRAINER">
+        <div class="KEYWORD_CONTAINER">
             <div class="PAIR_CONTAINER">
-                <span class="COMMON_TEXT">キーワード</span>
+                <span class="COMMON_TEXT KEYWORD_TITLE">キーワード</span>
                 <input id="input_keyword" class="INPUT_BOX" placeholder="店舗名または場所名を入力">
+                <button class="COMMON_BUTTON">検索</button>
             </div>
         </div>
-        <button class="COMMON_BUTTON">検索</button>
+        <br>
+        <div id="error" class="COMMON_TEXT ERROR_TEXT"></div>
     </body>
 </html>

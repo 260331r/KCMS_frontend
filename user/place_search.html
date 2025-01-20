@@ -7,12 +7,20 @@
         <script src="gen_placelist.js"></script>
     </head>
     <body>
+        <header>
+            <h2 class="TITLE">KCMS</h2>
+            <nav class="HEAD">
+                <ul class="MENU">
+                    <li><a href="./user_top.html">ホーム</a></li>
+                </ul>
+            </nav>
+        </header>
         <div>
             <span class="COMMON_TEXT USER_TEXT_HEAD">地域から探す</span>
             <form>
                 <select id="place_select_box" name="placelist"></select>
+                <button id="place_next_button" class="COMMON_BUTTON" type="button">検索</button>
             </form>
-            <button id="place_next_button" class="COMMON_BUTTON" type="button">検索</button>
         </div>
     </body>
 </html>

@@ -1,6 +1,6 @@
 // 初期設定
 document.addEventListener("DOMContentLoaded", () => {
-    make_container();
+    //make_container();
     give_func_button();
 });
 
@@ -19,7 +19,7 @@ function give_func_button() {
         }
     });
 }
-
+/*
 // データベースから今日の日付で出店するキッチンカーを取得する関数
 async function db_search_elements(date){
     create_not_search_text();
@@ -127,3 +127,4 @@ function clear_text() {
 
     return 0;
 }
+*/
