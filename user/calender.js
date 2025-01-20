@@ -113,18 +113,22 @@ function changeMonth(offset){
 }
 
 //カレンダー内の日付ボタンを押された時の処理
-function clicked_Button(year, month, day){
-    const inputDate = new Date(year, month, day);
-    let outText = document.getElementById("clicked_Date");
-    let textDate;
-    if(today < inputDate){
-        setSelected(year, month, day);
-        textDate = year + "年 " + (month + 1) + "月 " + day + "日 を選択しています。";       
-    }else{
-        textDate = "本日より後の日付を選択してください。"
-        setSelected(null, null, null)
+async function clicked_Button(year, month, day){
+    const inputDate = new Date(year, month, day+1);
+    
+    const date = inputDate.toISOString().split('T')[0];
+    console.log(date);
+
+    const searched_elements = await db_search_elements(date);
+    console.log(searched_elements);
+    console.log('a');
+    if (searched_elements) {
+        console.log('a');
+        const encoded_object = encodeURIComponent(JSON.stringify(searched_elements));
+        window.location.href = `./calender_search_result.html?param=${encoded_object}`;
+    } else {
+        //window.location.href = './calender_search_result.html';
     }
-    outText.textContent = textDate;
 }
 
 //選択された日付を変更する関数
@@ -132,4 +136,30 @@ function setSelected(year, month, day){
     selectedYear = year;
     selectedMonth = month;
     selectedDay = day;
+}
+
+// データベースから今日の日付で出店するキッチンカーを取得する関数
+async function db_search_elements(date){
+    const response = await fetch("http://127.0.0.1:8000/api/user/matched_list/get_by_date", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "date": {"日時" : date}
+        })
+    });
+    try {
+        const result = await response.json();
+        
+        if (!response.ok || !result || result.length <= 0) {
+            //create_not_search_text();
+        }
+
+        return result;
+    } catch (error) {
+        //create_server_error_text();
+    }
+
+    return false;
 }
