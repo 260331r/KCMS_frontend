@@ -78,10 +78,10 @@ body {
     font-size: 20px; /* 文字サイズを追加 */
 }
 
-/* 写真 */
+/* 写真 
 .KC_PHOTO {
     display: flex;
-    justify-content: center; /* 横方向に中央揃え */
+    justify-content: center;
     padding-top: 0px;
     gap: 10px;
     margin: 0 auto;
@@ -90,8 +90,9 @@ body {
     background-color: #FFFFFF;
     text-align: center;
     border: 5px solid #FF7F00;
-    margin-bottom: 15px; /* KC_PHOTOとの間に空白を追加 */
+    margin-bottom: 15px;
 }
+*/
 
 /* 出店スケジュール */
 /* 出店依頼リストの配置設定 */
@@ -132,5 +133,5 @@ body {
     font-size: 30px;
     color: #FF7F00;
     position: relative;
-    top: -30px;
+    top: -50px;
 }
