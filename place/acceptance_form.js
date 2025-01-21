@@ -60,25 +60,25 @@ function make_frame(shop_details) {
 
     const shop_genre = document.createElement("p");
     shop_genre.className = "TIME_TEXT";
-    shop_genre.textContent = "営業時間 : " + (shop_details.営業時間 || "未定"); // 安全策を追加
+    shop_genre.textContent = "住所 : " + (shop_details.住所 || "未定"); // 安全策を追加
     frame.append(shop_genre);
 
     const shop_name = document.createElement("p");
     shop_name.className = "PLACE_TEXT";
-    shop_name.textContent = shop_details.出店者名 || "未定"; // 安全策を追加
+    shop_name.textContent = shop_details.場所名 || "未定"; // 安全策を追加
     frame.append(shop_name);
 
     return frame;
 }
 
-// ストアIDからキッチンカー情報を取得する関数
+// ストアIDからキッチンカー出店予定情報を取得する関数
 async function db_all_elements(store_id) {
-    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_matching_accept/", {
+    const response = await fetch("http://127.0.0.1:8000/api/store/store_schedule_check/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ "store_id": store_id })
+        body: JSON.stringify({ "ユーザID": store_id })
     });
 
     if (!response.ok) {
