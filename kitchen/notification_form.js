@@ -43,11 +43,20 @@ function make_frame(request_details){
     // 場所名
     const place_name = document.createElement("p");
     place_name.className = "NAME_TEXT";
+
+    // 遷移先に送る情報を作成
+    const place_info = new URLSearchParams({
+        place_id: request_details.場所ID,
+        address: request_details.住所,
+        name: request_details.場所名,
+        region: request_details.地域
+    });
+
     //クリック可能なリンク
     const link = document.createElement("a");
-    // 遷移先URL（acceptance_form.htmlにplace_idを渡す）
-    link.href = `/acceptance_form.html?store_id=${request_details.場所ID}`;
-    link.textContent = "場所名 : " + request_details.場所名;
+    // 遷移先URL（acceptance_form.htmlにplace_infoを渡す）
+    link.href = `/acceptance_form.html?${place_info.toString()}`;
+    link.textContent = request_details.場所名;
     link.style.color = "#FF7F00"; // リンクの色を設定（必要に応じて調整）
     place_name.appendChild(link);
     frame.append(place_name);

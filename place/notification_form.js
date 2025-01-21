@@ -54,7 +54,7 @@ function make_frame(request_details){
 
     //クリック可能なリンク
     const link = document.createElement("a");
-    // 遷移先URL（acceptance_form.htmlにquery_parmsを渡す）
+    // 遷移先URL（acceptance_form.htmlにstore_infoを渡す）
     link.href = `/acceptance_form.html?${store_info.toString()}`;
     link.textContent = "出店者名 : " + request_details.出店者名;
     link.style.color = "#FF7F00"; // リンクの色を設定（必要に応じて調整）
