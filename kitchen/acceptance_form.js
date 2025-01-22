@@ -1,7 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const store_id = urlParams.get("place_id"); 
-    init_create_schedule_list();
+    const place_info = new URLSearchParams(window.location.search);
+    const place_id = place_info.get("place_id");
+    const address = place_info.get("address");
+    const name = place_info.get("name");
+    const region = place_info.get("region");
+
+    // 店舗情報をHTMLに表示
+    displayStoreInfo(name, address, region);
+
+    // 出店日時リストの作成を開始
+    if (place_id) {
+        init_create_schedule_list(place_id);
+    } else {
+        create_error_text("店舗IDが見つかりません。");
+    }
 });
 
 // キッチンカーの出店日時のリストを作成する関数
@@ -22,26 +34,33 @@ async function init_create_schedule_list() {
         console.error("スケジュールの取得に失敗しました:", error);
         create_error_text(document.getElementById("list")); // エラー時もエラーメッセージを表示
     }
+
+    return false;
 }
 
 // サーバーからスケジュールを取得する関数
 async function fetch_schedule_from_server(place_id) {
-    const response = await fetch("http://127.0.0.1:8000/api/store/store_matching_accept/", {
+    const response = await fetch("http://127.0.0.1:8000/api/locate/place_owner_schedule_check/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            "place_id":{"ユーザID":place_id}
-        })
-    });
+        body: JSON.stringify({ "ユーザID": place_id })
+        });
 
-    if (!response.ok) {
-        throw new Error("サーバーエラー: スケジュール取得に失敗しました");
+    try {
+        const result = await response.json();
+
+        if (!response.ok || !result || result.length <= 0) {
+            create_not_search_text();
+        }
+
+        return result;
+    } catch (error) {
+        create_error_text();
     }
 
-    const data = await response.json();
-    return data || []; // データが空の場合は空配列を返す
+    return data;
 }
 
 // リストの枠を量産する関数
